@@ -63,7 +63,7 @@ Tabla "favoritos":
 
 Space Gaze is a web page project that aims to provide comprehensive and up-to-date information on various celestial objects and bodies, including planets, exoplanets, asteroids, and other cosmic entities. This project seeks to make this information accessible to the general public, including individuals who may not have a scientific or technical knowledge.
 
-## 🇬🇧 Objetives 🇬🇧
+## 🇬🇧 Objectives 🇬🇧
 
 The project was conceived with the objective of fostering public interest in astronomy and related fields, by providing reliable and engaging content that highlights the latest research and discoveries in this area. The platform is designed to be user-friendly and interactive, encouraging visitors to explore and learn more about the universe we inhabit.
 
