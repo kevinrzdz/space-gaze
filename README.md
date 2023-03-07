@@ -1,3 +1,5 @@
+<div align="justify">
+
 # Space Gaze
 
 ## 🇬🇧 Index 🇬🇧
@@ -27,3 +29,5 @@ For more information, please refer to the documentation section.
 Space Gaze es un proyecto de página web que tiene como objetivo proporcionar información completa y actualizada sobre varios objetos y cuerpos celestes, incluyendo planetas, exoplanetas, asteroides y otras entidades cósmicas. Este proyecto busca hacer que esta información sea accesible al público en general, incluyendo a personas que no tengan conocimientos científicos o técnicos.
 
 Para más información, consultar el apartado de documentación.
+
+</div>
