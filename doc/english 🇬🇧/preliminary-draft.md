@@ -36,9 +36,19 @@ The website will have the following functionalities (preliminary):
 
 The technologies used will be:
 
-- PHP with Laravel for the Backend.
-- Javascript and Typescript with React for the Frontend.
+- HTML for the structure.
+- CSS and SASS for the styling.
+- Javascript and Typescript with React for the Front end.
+- PHP with Laravel for the Back end.
 - MySQL/MariaDB database.
 - Deployment with Docker.
 
 ### Sketch of the solution
+
+<div align="center">
+
+![Aplication draft](../../img/draft.png)
+
+</div>
+
+</div>
