@@ -16,7 +16,7 @@ For more information, please refer to the documentation section.
 
 ## 🇪🇸 Índice 🇪🇸
 
-- [Introduccíón](#introducción)
+- [Introducción](#introducción)
 - [Documentación](./doc/espa%C3%B1ol%20%F0%9F%87%AA%F0%9F%87%B8/anteproyecto.md)
 - [Código Fuente](./source/README.md)
 - [Testing](./testing/README.md)

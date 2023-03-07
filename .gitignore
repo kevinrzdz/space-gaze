@@ -1,0 +1,15 @@
+##############################
+## Visual Studio Code
+##############################
+.vscode/
+.code-workspace
+
+##############################
+## JetBrains IDEs
+##############################
+out/
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
