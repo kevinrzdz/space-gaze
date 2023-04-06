@@ -38,9 +38,9 @@ The technologies used will be:
 
 - HTML for the structure.
 - CSS and SASS for the styling.
-- Javascript and Typescript with React for the Front end.
-- PHP with Laravel for the Back end.
-- MySQL/MariaDB database.
+- Javascript and Typescript with Angular for the Front end.
+- Java with Spring for the Back end.
+- MySQL database.
 - Deployment with Docker.
 
 ### Sketch of the solution
