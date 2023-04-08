@@ -1,0 +1,14 @@
+.custom-dark {
+  .ngb-pagination {
+    .page-link,
+    .page-item.active .page-link {
+      background-color: #343a40;
+      border-color: #454d55;
+    }
+
+    .page-link:hover,
+    .page-item.active .page-link:hover {
+      background-color: #454d55;
+    }
+  }
+}
