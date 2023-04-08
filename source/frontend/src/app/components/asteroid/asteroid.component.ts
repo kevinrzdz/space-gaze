@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {AsteroidService} from '../../services/asteroid.service';
-import {Asteroid} from '../../models/asteroid.model';
+import {AsteroidService} from '../../services/asteroid/asteroid.service';
+import {Asteroid} from '../../models/asteroid/asteroid.model';
 
 @Component({
   selector: 'app-asteroid',
