@@ -6,5 +6,11 @@ import org.springframework.data.domain.Pageable;
 
 public interface AsteroidServiceInterface {
 
-    public Page<Asteroid> findAll(Pageable pageable);
+    Page<Asteroid> findAll(Pageable pageable);
+
+    Asteroid findById(Integer id);
+
+    Asteroid save(Asteroid asteroid);
+
+    void deleteById(Integer id);
 }

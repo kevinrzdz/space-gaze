@@ -1,34 +1,33 @@
 package com.space_gaze.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "planet")
-public class Planet implements Serializable {
-
+public class Planet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
+    @Column(name = "name", nullable = false)
     private String name;
 
-    private double diameter;
+    @Column(name = "diameter", nullable = false)
+    private Double diameter;
 
-    private double distanceEarth;
+    @Column(name = "distance", nullable = false)
+    private Double distance;
 
+    @Column(name = "description")
     private String description;
 
     @OneToMany(mappedBy = "planet")
-    private List<UserTracking> userTrackings;
-
-    @Serial
-    private static final long serialVersionUID = 1L;
+    private List<UserTrackingPlanet> userTrackingPlanets;
 }
+

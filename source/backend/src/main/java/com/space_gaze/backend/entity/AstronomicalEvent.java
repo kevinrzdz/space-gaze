@@ -1,40 +1,34 @@
 package com.space_gaze.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-@Getter
-@Setter
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "astronomical_event")
-public class AstronomicalEvent implements Serializable {
-
+public class AstronomicalEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Lob
+    @Column(name = "description")
     private String description;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "start_date")
+    @Column(name = "start_date", nullable = false)
     private Date startDate;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "end_date")
     private Date endDate;
 
     @OneToMany(mappedBy = "astronomicalEvent")
-    private List<UserTracking> userTrackings;
-
-    @Serial
-    private static final long serialVersionUID = 1L;
+    private List<UserTrackingEvent> userTrackingEvents;
 }
+
