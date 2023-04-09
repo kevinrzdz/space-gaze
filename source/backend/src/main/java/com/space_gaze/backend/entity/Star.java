@@ -1,35 +1,33 @@
 package com.space_gaze.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "star")
-public class Star implements Serializable {
-
+public class Star {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
+    @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "constellation", nullable = false)
     private String constellation;
 
+    @Column(name = "magnitude", nullable = false)
     private String magnitude;
 
-    @Column(name = "distance_earth")
+    @Column(name = "distance_earth", nullable = false)
     private String distanceEarth;
 
     @OneToMany(mappedBy = "star")
-    private List<UserTracking> userTrackings;
-
-    @Serial
-    private static final long serialVersionUID = 1L;
+    private List<UserTrackingStar> userTrackingStars;
 }
+

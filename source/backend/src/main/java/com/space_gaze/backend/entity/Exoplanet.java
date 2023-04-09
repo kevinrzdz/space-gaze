@@ -1,27 +1,25 @@
 package com.space_gaze.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.List;
 
-@Getter
-@Setter
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "exoplanet")
-public class Exoplanet implements Serializable {
-
+public class Exoplanet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
+    @Column(name = "name")
     private String name;
 
     @Column(name = "discovery_year")
-    private int discoveryYear;
+    private Integer discoveryYear;
 
     @Column(name = "publication_date")
     private String publicationDate;
@@ -29,13 +27,14 @@ public class Exoplanet implements Serializable {
     @Column(name = "discovery_facility")
     private String discoveryFacility;
 
-    private double mass;
+    @Column(name = "mass")
+    private Double mass;
 
-    private double radius;
+    @Column(name = "radius")
+    private Double radius;
 
     @OneToMany(mappedBy = "exoplanet")
-    private List<UserTracking> userTrackings;
-
-    @Serial
-    private static final long serialVersionUID = 1L;
+    private List<UserTrackingExoplanet> userTrackingExoplanets;
 }
+
+

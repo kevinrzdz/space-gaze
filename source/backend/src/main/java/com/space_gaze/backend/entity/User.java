@@ -1,40 +1,49 @@
 package com.space_gaze.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.List;
 
-@Getter
-@Setter
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "user")
-public class User implements Serializable {
-
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
+    @Column(name = "username", nullable = false)
     private String username;
 
+    @Column(name = "password", nullable = false)
     private String password;
 
+    @Column(name = "email", nullable = false)
     private String email;
 
-    private String role;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false)
+    private Role role;
 
     @OneToMany(mappedBy = "user")
-    private List<Post> posts;
+    private List<UserTrackingAsteroid> userTrackingAsteroids;
 
     @OneToMany(mappedBy = "user")
-    private List<Thread> threads;
+    private List<UserTrackingEvent> userTrackingEvents;
 
     @OneToMany(mappedBy = "user")
-    private List<UserTracking> userTrackings;
+    private List<UserTrackingExoplanet> userTrackingExoplanets;
 
-    @Serial
-    private static final long serialVersionUID = 1L;
+    @OneToMany(mappedBy = "user")
+    private List<UserTrackingPlanet> userTrackingPlanets;
+
+    @OneToMany(mappedBy = "user")
+    private List<UserTrackingStar> userTrackingStars;
+
+    public enum Role {
+        user, admin
+    }
 }

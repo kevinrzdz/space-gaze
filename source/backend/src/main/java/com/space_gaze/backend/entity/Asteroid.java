@@ -2,37 +2,30 @@ package com.space_gaze.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.List;
 
-@Getter
-@Setter
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "asteroid")
-public class Asteroid implements Serializable {
-
+public class Asteroid {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
+    @Column(name = "name")
     private String name;
 
-    private double diameter;
+    @Column(name = "diameter", nullable = false)
+    private Double diameter;
 
-    private boolean dangerous;
-
-    @OneToMany(mappedBy = "asteroid")
-    @JsonIgnore
-    private List<AsteroidApproach> asteroidApproaches;
+    @Column(name = "dangerous", nullable = false)
+    private Boolean dangerous;
 
     @OneToMany(mappedBy = "asteroid")
     @JsonIgnore
-    private List<UserTracking> userTrackings;
-
-    @Serial
-    private static final long serialVersionUID = 1L;
+    private List<UserTrackingAsteroid> userTrackingAsteroids;
 }
