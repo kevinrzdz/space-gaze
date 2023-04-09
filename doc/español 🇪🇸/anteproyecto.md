@@ -31,8 +31,6 @@ La web tendrá las siguientes funcionalidades (preliminar):
 - Permitir a los usuarios buscar y filtrar información por distintos criterios, como nombre, tipo de objeto, tamaño, distancia, entre otros.
 - Añadir a favoritos los cuerpos celestes a los que deseen realizar un seguimiento más detallado.
 - Proporcionar un calendario sobre eventos astronómicos, como eclipses, alineaciones planetarias y lluvias de meteoros.
-- Artículos y noticias sobre los últimos descubrimientos, investigaciones y eventos relacionados con la astronomía.
-- Foros de discusión donde los visitantes podrán interactuar con otros entusiastas de la astronomía y compartir ideas e información.
 
 Las tecnologías usadas serán:
 

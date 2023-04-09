@@ -31,8 +31,6 @@ The website will have the following functionalities (preliminary):
 - Allow users to search and filter information by different criteria, such as name, type of object, size, distance, among others.
 - Add favorite celestial bodies that they wish to track more closely.
 - Provide a calendar of astronomical events, such as eclipses, planetary alignments, and meteor showers.
-- Articles and news about the latest discoveries, research, and events related to astronomy.
-- Discussion forums where visitors can interact with other astronomy enthusiasts and share ideas and information.
 
 The technologies used will be:
 
