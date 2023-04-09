@@ -15,7 +15,7 @@ export class AsteroidService {
     page: number
   ): Observable<{ content: Asteroid[]; totalElements: number }> {
     return this.http.get<{ content: Asteroid[]; totalElements: number }>(
-      `${this.apiUrl}/asteroids?page=${page}`
+      `${this.apiUrl}/asteroids?page=${page}&size=15`
     );
   }
 

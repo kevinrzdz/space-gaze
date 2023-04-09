@@ -10,7 +10,7 @@ import {Asteroid} from '../../models/asteroid/asteroid.model';
 export class AsteroidComponent implements OnInit {
   asteroids: Asteroid[] = [];
   page: number = 1;
-  pageSize: number = 20;
+  pageSize: number = 15;
   collectionSize: number = 0;
   goToPage: number = 1;
 
