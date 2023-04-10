@@ -15,14 +15,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "username", nullable = false)
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
+
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
     @Column(name = "password", nullable = false)
     private String password;
-
-    @Column(name = "email", nullable = false)
-    private String email;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
@@ -42,6 +42,22 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<UserTrackingStar> userTrackingStars;
+
+    public User(int id, String email, String username, String password) {
+        this.id = id;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.role = Role.user;
+    }
+
+    public User (int id, String email, String username, String password, Role role) {
+        this.id = id;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
 
     public enum Role {
         user, admin
