@@ -2,6 +2,10 @@
 
 # Space Gaze
 
+<div align=center>
+  <img src="./img/logo.png" alt="app logo" height="300" width="300">
+</div>
+
 ## 🇬🇧 Index 🇬🇧
 
 - [Introduction](#introduction)
