@@ -6,6 +6,7 @@ import {AsteroidComponent} from "./components/asteroid/asteroid.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'home', component: AsteroidComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'asteroids', component: AsteroidComponent },
