@@ -6,7 +6,7 @@ import com.space_gaze.backend.response.LoginResponse;
 
 public interface UserServiceInterface {
 
-    String addUser(UserDto userDto);
+    LoginResponse addUser(UserDto userDto);
 
     LoginResponse loginUser(LoginDto loginDto);
 }

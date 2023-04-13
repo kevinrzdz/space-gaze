@@ -2,9 +2,9 @@ package com.space_gaze.backend.response;
 
 public class LoginResponse {
     String message;
-    Boolean status;
+    boolean status;
 
-    public LoginResponse(String message, Boolean status) {
+    public LoginResponse(String message, boolean status) {
         this.message = message;
         this.status = status;
     }
@@ -17,11 +17,11 @@ public class LoginResponse {
         this.message = message;
     }
 
-    public Boolean getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 }
