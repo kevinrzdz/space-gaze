@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/users")
 public class UserController {
 
@@ -17,8 +17,9 @@ public class UserController {
     private UserServiceInterface userService;
 
     @PostMapping("/save")
-    public String saveUser(@RequestBody UserDto userDto) {
-        return userService.addUser(userDto);
+    public ResponseEntity<?> saveUser(@RequestBody UserDto userDto) {
+        LoginResponse loginResponse = userService.addUser(userDto);
+        return ResponseEntity.ok(loginResponse);
     }
 
     @PostMapping("/login")
