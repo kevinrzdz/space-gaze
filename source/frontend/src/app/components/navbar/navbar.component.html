@@ -1,36 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <img ngSrc="assets/img/logo.png" class="logo" alt="logo" height="150" width="150" priority/>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item  p-2">
-          <a class="nav-link" href="#">Asteroids</a>
-        </li>
-        <li class="nav-item p-2">
-          <a class="nav-link" href="#">Asteroids Approaches</a>
-        </li>
-        <li class="nav-item p-2">
-          <a class="nav-link" href="#">Planets</a>
-        </li>
-        <li class="nav-item p-2">
-          <a class="nav-link" href="#">Exoplanets</a>
-        </li>
-        <li class="nav-item p-2">
-          <a class="nav-link" href="#">Stars</a>
-        </li>
-        <li class="nav-item p-2">
-          <a class="nav-link" href="#">Events</a>
-        </li>
-        <li class="nav-item p-2">
-          <a class="nav-link" href="#">Posts</a>
-        </li>
+<nav class="navbar navbar-expand-lg">
+  <div class="navbar-container">
+    <a href="#" class="menu-item logo"><img ngSrc="assets/img/logo.png" alt="Logo" height="3069" width="3215"></a>
+    <ul class="navbar-menu">
+      <li class="menu-item"><a href="#">Asteroids</a></li>
+      <li class="menu-item"><a href="#">Stars</a></li>
+      <li class="menu-item"><a href="#">Planets</a></li>
+      <li class="menu-item"><a href="#">Exoplanets</a></li>
+      <li class="menu-item"><a href="#">Astronomical Events</a></li>
+    </ul>
+    <div class="user-icon" (click)="toggleUserMenu()">
+      <i class="bi bi-person-circle me-5"></i>
+      <ul class="user-menu" [ngClass]="{'show': userMenuVisible}">
+        <li><a href="#">Perfil</a></li>
+        <li><a href="#">Ajustes</a></li>
+        <li><a href="#">Cerrar sesión</a></li>
       </ul>
     </div>
   </div>
 </nav>
+
+
