@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Asteroid } from '../../models/asteroid/asteroid.model';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Asteroid} from '../../models/asteroid/asteroid.model';
 
 @Injectable({
   providedIn: 'root',
@@ -9,13 +9,15 @@ import { Asteroid } from '../../models/asteroid/asteroid.model';
 export class AsteroidService {
   private apiUrl = 'http://localhost:8090/api';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getAsteroids(
-    page: number
+    page: number,
+    size: number
   ): Observable<{ content: Asteroid[]; totalElements: number }> {
     return this.http.get<{ content: Asteroid[]; totalElements: number }>(
-      `${this.apiUrl}/asteroids?page=${page}&size=15`
+      `${this.apiUrl}/asteroids?page=${page}&size=${size}`
     );
   }
 

@@ -1,20 +1,20 @@
 .bg {
-  background: #000 url('https://wolf.drjm.co.uk/nightsky/stars.jpg') repeat;
-  height: 100%;
+  min-height: 100vh;
   width: auto;
+  background-image: url("/assets/img/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
-  .custom-dark {
-    .ngb-pagination {
-      .page-link,
-      .page-item.active .page-link {
-        background-color: #343a40;
-        border-color: #454d55;
-      }
-
-      .page-link:hover,
-      .page-item.active .page-link:hover {
-        background-color: #454d55;
-      }
-    }
-  }
+mat-paginator {
+  margin: 0 auto;
+  display: flex;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 0.8rem;
+  background-color: transparent;
 }
