@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AsteroidService} from '../../services/asteroid/asteroid.service';
 import {Asteroid} from '../../models/asteroid/asteroid.model';
+import {PageEvent} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-asteroid',
@@ -9,36 +10,28 @@ import {Asteroid} from '../../models/asteroid/asteroid.model';
 })
 export class AsteroidComponent implements OnInit {
   asteroids: Asteroid[] = [];
-  page: number = 1;
-  pageSize: number = 15;
   collectionSize: number = 0;
-  goToPage: number = 1;
+  pageSize: number = 15;
+  pageIndex: number = 0;
 
   constructor(private asteroidService: AsteroidService) {
   }
 
   ngOnInit(): void {
-    this.loadAsteroids(this.page - 1);
+    this.loadAsteroids(this.pageIndex);
   }
 
   loadAsteroids(page: number): void {
-    this.asteroidService.getAsteroids(page).subscribe(data => {
+    this.asteroidService.getAsteroids(page, this.pageSize).subscribe(data => {
       this.asteroids = data.content;
       this.collectionSize = data.totalElements;
     });
   }
 
-  loadPage(page: number): void {
-    this.loadAsteroids(page - 1);
-  }
-
-  jumpToPage(): void {
-    if (this.goToPage > 0 && this.goToPage <= Math.ceil(this.collectionSize / this.pageSize)) {
-      this.page = this.goToPage;
-      this.loadAsteroids(this.page - 1);
-    } else {
-      alert('La página ingresada no es válida.');
-    }
+  pageChanged(event: PageEvent) {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.loadAsteroids(this.pageIndex);
   }
 
 }
