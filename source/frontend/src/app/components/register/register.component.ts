@@ -30,4 +30,10 @@ export class RegisterComponent {
       }
     });
   }
+
+  onEnter(event: any) {
+    if (event.keyCode === 13) {
+      this.register();
+    }
+  }
 }
