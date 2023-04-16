@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth/auth.service';
-import { LoginDto } from '../../models/loginDto/loginDto.model';
-import { Router } from '@angular/router';
+import {Component} from '@angular/core';
+import {AuthService} from '../../services/auth/auth.service';
+import {LoginDto} from '../../models/loginDto/loginDto.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,8 @@ export class LoginComponent {
 
   errorMessage!: string;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {
+  }
 
   login() {
     this.authService.login(this.loginData).subscribe(response => {
@@ -27,5 +28,11 @@ export class LoginComponent {
         this.errorMessage = response.message;
       }
     });
+  }
+
+  onEnter(event: any) {
+    if (event.keyCode === 13) {
+      this.login();
+    }
   }
 }
