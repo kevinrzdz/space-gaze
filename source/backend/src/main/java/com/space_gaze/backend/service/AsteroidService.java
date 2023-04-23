@@ -7,35 +7,35 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
-public class AsteroidService implements AsteroidServiceInterface {
+public class AsteroidService implements CrudServiceInterface<Asteroid, Integer> {
 
     @Autowired
-    private AsteroidRepository asteroidDao;
+    private AsteroidRepository asteroidRepository;
+
+    @Override
+    public List<Asteroid> findAll() {
+        return asteroidRepository.findAll();
+    }
 
     public Page<Asteroid> findAll(Pageable pageable) {
-        return asteroidDao.findAll(pageable);
+        return asteroidRepository.findAll(pageable);
     }
 
     @Override
     public Asteroid findById(Integer id) {
-        Optional<Asteroid> result = asteroidDao.findById(Math.toIntExact(id));
-        if (result.isPresent()) {
-            return result.get();
-        } else {
-            throw new RuntimeException("Could not found asteroid with id: " + id);
-        }
+        return asteroidRepository.findById(id).orElseThrow(() -> new RuntimeException("Could not found asteroid with id: " + id));
     }
 
     @Override
     public Asteroid save(Asteroid asteroid) {
-        return asteroidDao.save(asteroid);
+        return asteroidRepository.save(asteroid);
     }
 
     @Override
     public void deleteById(Integer id) {
-        asteroidDao.deleteById(Math.toIntExact(id));
+        asteroidRepository.deleteById(id);
     }
 }

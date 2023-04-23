@@ -3,7 +3,7 @@ package com.space_gaze.backend.controller;
 import com.space_gaze.backend.dto.LoginDto;
 import com.space_gaze.backend.dto.UserDto;
 import com.space_gaze.backend.response.LoginResponse;
-import com.space_gaze.backend.service.UserServiceInterface;
+import com.space_gaze.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    private UserServiceInterface userService;
+    private UserService userService;
 
     @PostMapping("/save")
     public ResponseEntity<?> saveUser(@RequestBody UserDto userDto) {
