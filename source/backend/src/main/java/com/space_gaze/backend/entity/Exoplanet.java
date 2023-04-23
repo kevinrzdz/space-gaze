@@ -1,5 +1,6 @@
 package com.space_gaze.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,6 +35,7 @@ public class Exoplanet {
     private Double radius;
 
     @OneToMany(mappedBy = "exoplanet")
+    @JsonIgnore
     private List<UserTrackingExoplanet> userTrackingExoplanets;
 }
 
