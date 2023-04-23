@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+$bg-color: #111;
+$text-color: #d5d5d5;
+$primary-color: #005288;
+$hover-color: #0077b6;
+
+.bg {
+  background-color: $bg-color;
+  color: $text-color;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  font-family: 'Familjen Grotesk', sans-serif;
+}
+
+.row {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+img {
+  border-radius: 0.8rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+h3 {
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  background-color: $primary-color;
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}

@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg">
   <div class="navbar-container">
-    <a href="#" class="menu-item logo"><img ngSrc="assets/img/logo.png" alt="Logo" height="3069" width="3215"></a>
+    <a routerLink="/home" class="menu-item logo"><img ngSrc="assets/img/logo.png" alt="Logo" height="3069" width="3215"></a>
     <ul class="navbar-menu">
       <li class="menu-item"><a routerLink="/asteroids">Asteroids</a></li>
-      <li class="menu-item"><a href="#">Stars</a></li>
-      <li class="menu-item"><a href="#">Planets</a></li>
-      <li class="menu-item"><a href="#">Exoplanets</a></li>
-      <li class="menu-item"><a href="#">Astronomical Events</a></li>
+      <li class="menu-item"><a routerLink="/events">Astronomical Events</a></li>
+      <li class="menu-item"><a routerLink="/planets">Planets</a></li>
+      <li class="menu-item"><a routerLink="/exoplanets">Exoplanets</a></li>
+      <li class="menu-item"><a routerLink="/stars">Stars</a></li>
     </ul>
     <div class="user-icon" (click)="toggleUserMenu()">
       <i class="bi bi-person-circle me-5"></i>
