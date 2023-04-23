@@ -5,6 +5,7 @@ import {RegisterComponent} from "./components/register/register.component";
 import {AsteroidComponent} from "./components/asteroid/asteroid.component";
 import {HomeComponent} from "./components/home/home.component";
 import {PlanetComponent} from "./components/planet/planet.component";
+import {StarComponent} from "./components/star/star.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'asteroids', component: AsteroidComponent },
   { path: 'planets', component: PlanetComponent },
+  { path: 'stars', component: StarComponent },
 ];
 
 @NgModule({

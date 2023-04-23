@@ -15,6 +15,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
 import { PlanetComponent } from './components/planet/planet.component';
+import { StarComponent } from './components/star/star.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { PlanetComponent } from './components/planet/planet.component';
     RegisterComponent,
     HomeComponent,
     PlanetComponent,
+    StarComponent,
   ],
   imports: [
     BrowserModule,

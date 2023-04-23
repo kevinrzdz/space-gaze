@@ -1,0 +1,32 @@
+.bg {
+  min-height: 100vh;
+  width: auto;
+  background-image: url("/assets/img/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'Familjen Grotesk', sans-serif;
+
+  table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border: 1px solid #fff;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+
+  mat-paginator {
+    margin: 1rem auto;
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 0.8rem;
+    background-color: transparent;
+  }
+}
+
