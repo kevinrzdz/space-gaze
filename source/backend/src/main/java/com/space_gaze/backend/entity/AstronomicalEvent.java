@@ -1,5 +1,6 @@
 package com.space_gaze.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,7 @@ public class AstronomicalEvent {
     private Date endDate;
 
     @OneToMany(mappedBy = "astronomicalEvent")
+    @JsonIgnore
     private List<UserTrackingEvent> userTrackingEvents;
 }
 
