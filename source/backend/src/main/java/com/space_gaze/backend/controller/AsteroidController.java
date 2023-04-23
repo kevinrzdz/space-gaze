@@ -1,7 +1,7 @@
 package com.space_gaze.backend.controller;
 
 import com.space_gaze.backend.entity.Asteroid;
-import com.space_gaze.backend.service.AsteroidServiceInterface;
+import com.space_gaze.backend.service.AsteroidService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class AsteroidController {
 
     @Autowired
-    private AsteroidServiceInterface asteroidService;
+    private AsteroidService asteroidService;
 
     @GetMapping
     public Page<Asteroid> getAllAsteroids(
@@ -39,7 +39,7 @@ public class AsteroidController {
 
     @PutMapping("/{id}")
     public Asteroid updateAsteroid(@PathVariable Integer id, @RequestBody Asteroid asteroid) {
-        asteroid.setId(Math.toIntExact(id));
+        asteroid.setId(id);
         return asteroidService.save(asteroid);
     }
 

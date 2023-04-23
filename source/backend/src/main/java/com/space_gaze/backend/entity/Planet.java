@@ -1,5 +1,6 @@
 package com.space_gaze.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,7 @@ public class Planet {
     private String description;
 
     @OneToMany(mappedBy = "planet")
+    @JsonIgnore
     private List<UserTrackingPlanet> userTrackingPlanets;
 }
 

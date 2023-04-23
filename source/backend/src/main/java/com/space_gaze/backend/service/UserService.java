@@ -67,7 +67,7 @@ public class UserService implements UserServiceInterface {
         boolean isPasswordRight = passwordEncoder.matches(password, encodedPassword);
 
         if (!isPasswordRight) {
-            return new LoginResponse("Password does not match", false);
+            return new LoginResponse("Error in username and/or password", false);
         }
 
         Optional<User> user = userRepository.findByUsernameAndPassword(loginDto.getUsername().toLowerCase(), encodedPassword);
