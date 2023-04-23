@@ -9,7 +9,7 @@ import {PageEvent} from "@angular/material/paginator";
   styleUrls: ['./asteroid.component.scss']
 })
 export class AsteroidComponent implements OnInit {
-  asteroids: Asteroid[] = [];
+  asteroids!: Asteroid[];
   collectionSize: number = 0;
   pageSize: number = 15;
   pageIndex: number = 0;
