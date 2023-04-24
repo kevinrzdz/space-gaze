@@ -1,0 +1,28 @@
+<div class="bg">
+  <div *ngIf="events" class="container">
+    <app-navbar></app-navbar>
+    <div class="row">
+      <div *ngFor="let event of events" class="col-md-4">
+        <div class="card my-3 event-card text-center">
+          <div class="card-header event-card-header">
+            <h5 class="card-title">{{ event.name }}</h5>
+          </div>
+          <div class="card-body event-card-body">
+            <img
+              [src]="getRandomImage()"
+              alt="Astronomical Event"
+              class="card-img-top event-card-image"
+            />
+            <p class="card-text mt-3">{{ event.description }}</p>
+            <p>
+              <strong>Start Date:</strong> {{ event.startDate | date: 'short' }}
+            </p>
+            <p>
+              <strong>End Date:</strong> {{ event.endDate | date: 'short' }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
