@@ -10,12 +10,13 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
 import {NgOptimizedImage} from "@angular/common";
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './components/home/home.component';
-import { PlanetComponent } from './components/planet/planet.component';
-import { StarComponent } from './components/star/star.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HomeComponent} from './components/home/home.component';
+import {PlanetComponent} from './components/planet/planet.component';
+import {StarComponent} from './components/star/star.component';
+import {ExoplanetComponent} from './components/exoplanet/exoplanet.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { StarComponent } from './components/star/star.component';
     HomeComponent,
     PlanetComponent,
     StarComponent,
+    ExoplanetComponent,
   ],
   imports: [
     BrowserModule,

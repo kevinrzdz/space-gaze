@@ -1,0 +1,31 @@
+<div class="bg">
+  <app-navbar></app-navbar>
+  <div class="container text-center">
+    <div class="table-responsive">
+      <table class="table table-dark table-striped">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Discovery Year</th>
+          <th>Mass</th>
+          <th>Radius</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let exoplanet of exoplanets">
+          <td>{{exoplanet.name}}</td>
+          <td>{{exoplanet.discoveryYear}}</td>
+          <td>{{exoplanet.mass == null ? 'No data available' : exoplanet.mass}}</td>
+          <td>{{exoplanet.radius == null ? 'No data available' : exoplanet.radius}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <mat-paginator
+      (page)="pageChanged($event)" [length]="collectionSize"
+      [pageSizeOptions]="[15, 25, 50]"
+      [pageSize]="pageSize"
+    >
+    </mat-paginator>
+  </div>
+</div>
