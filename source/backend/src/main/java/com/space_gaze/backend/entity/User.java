@@ -1,16 +1,17 @@
 package com.space_gaze.backend.entity;
 
-import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @Table(name = "user")
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -51,7 +52,7 @@ public class User {
         this.role = Role.user;
     }
 
-    public User (int id, String email, String username, String password, Role role) {
+    public User(int id, String email, String username, String password, Role role) {
         this.id = id;
         this.email = email;
         this.username = username;
