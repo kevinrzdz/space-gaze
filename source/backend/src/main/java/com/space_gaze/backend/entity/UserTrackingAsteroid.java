@@ -3,13 +3,14 @@ package com.space_gaze.backend.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @Entity
 @Table(name = "user_tracking_asteroid")
-public class UserTrackingAsteroid {
+public class UserTrackingAsteroid implements Serializable {
     @Id
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
