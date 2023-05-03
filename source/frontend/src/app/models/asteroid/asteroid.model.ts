@@ -3,4 +3,5 @@ export interface Asteroid {
   name: string;
   diameter: number;
   dangerous: boolean;
+  image: string;
 }
