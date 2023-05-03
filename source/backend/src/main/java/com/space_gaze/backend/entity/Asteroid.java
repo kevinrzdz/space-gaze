@@ -26,6 +26,9 @@ public class Asteroid implements Serializable {
     @Column(name = "dangerous", nullable = false)
     private Boolean dangerous;
 
+    @Column(name = "image")
+    private String image;
+
     @OneToMany(mappedBy = "asteroid")
     @JsonIgnore
     private List<UserTrackingAsteroid> userTrackingAsteroids;
