@@ -11,7 +11,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let asteroid of asteroids">
+        <tr *ngFor="let asteroid of asteroids" routerLink="/asteroids/{{asteroid.id}}">
           <td>{{asteroid.name}}</td>
           <td>{{asteroid.diameter}}</td>
           <td>{{asteroid.dangerous ? 'Yes' : 'No'}}</td>

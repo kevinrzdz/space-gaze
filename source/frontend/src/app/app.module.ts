@@ -17,7 +17,9 @@ import {HomeComponent} from './components/home/home.component';
 import {PlanetComponent} from './components/planet/planet.component';
 import {StarComponent} from './components/star/star.component';
 import {ExoplanetComponent} from './components/exoplanet/exoplanet.component';
-import { AstronomicalEventComponent } from './components/astronomical-event/astronomical-event.component';
+import {AstronomicalEventComponent} from './components/astronomical-event/astronomical-event.component';
+import {NgxPaginationModule} from "ngx-pagination";
+import {AsteroidDetailsComponent} from './components/asteroid/details/asteroid-details.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { AstronomicalEventComponent } from './components/astronomical-event/astr
     StarComponent,
     ExoplanetComponent,
     AstronomicalEventComponent,
+    AsteroidDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { AstronomicalEventComponent } from './components/astronomical-event/astr
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
