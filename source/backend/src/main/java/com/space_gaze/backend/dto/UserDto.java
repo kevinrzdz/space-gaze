@@ -1,7 +1,5 @@
 package com.space_gaze.backend.dto;
 
-import com.space_gaze.backend.entity.User;
-
 public class UserDto {
 
     private int id;

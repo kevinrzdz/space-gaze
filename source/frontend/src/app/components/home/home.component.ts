@@ -6,9 +6,4 @@ import {Component} from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  userMenuVisible = false;
-
-  toggleUserMenu(): void {
-    this.userMenuVisible = !this.userMenuVisible;
-  }
 }

@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ExoplanetService implements CrudServiceInterface<Exoplanet, Integer> {
@@ -18,6 +19,18 @@ public class ExoplanetService implements CrudServiceInterface<Exoplanet, Integer
     @Override
     public List<Exoplanet> findAll() {
         return exoplanetRepository.findAll();
+    }
+
+    public List<Exoplanet> search(String name) {
+        List<Exoplanet> exoplanets = exoplanetRepository.findAll();
+
+        if (name == null || name.trim().isEmpty()) {
+            return exoplanets;
+        } else {
+            return exoplanets.stream()
+                    .filter(exoplanet -> exoplanet.getName().toLowerCase().contains(name.toLowerCase()))
+                    .collect(Collectors.toList());
+        }
     }
 
     @Override

@@ -4,7 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
-import {AsteroidComponent} from './components/asteroid/asteroid.component';
+import {TrackerComponent} from './components/tracker/tracker.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {LoginComponent} from './components/login/login.component';
@@ -15,27 +15,23 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HomeComponent} from './components/home/home.component';
 import {PlanetComponent} from './components/planet/planet.component';
-import {StarComponent} from './components/star/star.component';
-import {ExoplanetComponent} from './components/exoplanet/exoplanet.component';
 import {AstronomicalEventComponent} from './components/astronomical-event/astronomical-event.component';
 import {NgxPaginationModule} from "ngx-pagination";
-import {AsteroidDetailsComponent} from './components/asteroid/details/asteroid-details.component';
+import {DetailsComponent} from './components/tracker/details/details.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
     AppComponent,
-    AsteroidComponent,
+    TrackerComponent,
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
     HomeComponent,
     PlanetComponent,
-    StarComponent,
-    ExoplanetComponent,
     AstronomicalEventComponent,
-    AsteroidDetailsComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,

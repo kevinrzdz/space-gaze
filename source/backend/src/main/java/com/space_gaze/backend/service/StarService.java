@@ -8,16 +8,29 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class StarService implements CrudServiceInterface<Star, Integer> {
-    
+
     @Autowired
     private StarRepository starRepository;
-    
+
     @Override
     public List<Star> findAll() {
         return starRepository.findAll();
+    }
+
+    public List<Star> search(String name) {
+        List<Star> stars = starRepository.findAll();
+
+        if (name == null || name.trim().isEmpty()) {
+            return stars;
+        } else {
+            return stars.stream()
+                    .filter(star -> star.getName().toLowerCase().contains(name.toLowerCase()))
+                    .collect(Collectors.toList());
+        }
     }
 
     @Override

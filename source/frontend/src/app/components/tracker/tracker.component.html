@@ -1,0 +1,60 @@
+<div class="bg">
+  <div class="container">
+    <app-navbar></app-navbar>
+    <div class="container text-center">
+      <div class="welcome-container text-white">
+        <h1 class="welcome-title">Welcome to the Space Tracker</h1>
+        <p class="welcome-text">Use the search box and find information about any asteroid, star or exoplanet on the
+          solar system.</p>
+      </div>
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Search Celestial Body</mat-label>
+        <input (input)="search()" [(ngModel)]="searchName" matInput>
+      </mat-form-field>
+      <div class="card-container text-center">
+        <mat-card *ngFor="let star of stars" class="star-card" routerLink="/stars/{{star.id}}">
+          <mat-card-content>
+            <svg class="icon icon-tabler icon-tabler-comet" fill="none" height="44" stroke="#6f32be"
+                 stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="44"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0h24v24H0z" fill="none" stroke="none"/>
+              <path d="M15.5 18.5l-3 1.5l.5 -3.5l-2 -2l3 -.5l1.5 -3l1.5 3l3 .5l-2 2l.5 3.5z"/>
+              <line x1="4" x2="11" y1="4" y2="11"/>
+              <line x1="9" x2="12.5" y1="4" y2="7.5"/>
+              <line x1="4" x2="7.5" y1="9" y2="12.5"/>
+            </svg>
+            <p class="card-title">{{star.name}}</p>
+            <p class="card-text">Constellation: {{star.constellation}}</p>
+            <p class="card-text">Distance Earth: {{star.distanceEarth == null || star.distanceEarth.toString() == '' ? 'No data yet' : star.distanceEarth + ' km'}}</p>
+            <p class="card-text">Magnitude: {{star.magnitude == null || star.magnitude.toString() == '' ? 'No data yet' : star.magnitude}}</p>
+          </mat-card-content>
+        </mat-card>
+        <mat-card *ngFor="let asteroid of asteroids" class="asteroid-card" routerLink="/asteroids/{{asteroid.id}}">
+          <mat-card-content>
+            <img src="/assets/img/asteroid-svgrepo-com.svg" alt="asteroid icon">
+            <p class="card-title">{{asteroid.name}}</p>
+            <p class="card-text">Diameter: {{asteroid.diameter}} Km</p>
+            <p class="card-text">Dangerous: {{asteroid.dangerous ? 'Yes' : 'No'}}</p>
+          </mat-card-content>
+        </mat-card>
+        <mat-card *ngFor="let exoplanet of exoplanets" class="asteroid-card" routerLink="/asteroids/{{exoplanet.id}}">
+          <mat-card-content>
+            <svg class="icon icon-tabler icon-tabler-planet" fill="none" height="44" stroke="#6f32be"
+                 stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="44"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0h24v24H0z" fill="none" stroke="none"/>
+              <path
+                d="M18.816 13.58c2.292 2.138 3.546 4 3.092 4.9c-.745 1.46 -5.783 -.259 -11.255 -3.838c-5.47 -3.579 -9.304 -7.664 -8.56 -9.123c.464 -.91 2.926 -.444 5.803 .805"/>
+              <circle cx="12" cy="12" r="7"/>
+            </svg>
+            <p class="card-title">{{exoplanet.name}}</p>
+            <p class="card-text">Mass: {{exoplanet.mass}} Kg</p>
+            <p class="card-text">Radius: {{exoplanet.radius}} Km</p>
+            <p class="card-text">Publication Date: {{exoplanet.publicationDate}}</p>
+            <p class="card-text">Discovery Facility: {{exoplanet.discoveryFacility}}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

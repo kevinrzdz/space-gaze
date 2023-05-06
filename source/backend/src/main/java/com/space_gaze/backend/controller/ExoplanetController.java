@@ -8,6 +8,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/exoplanets")
@@ -17,6 +19,11 @@ public class ExoplanetController {
     private ExoplanetService exoplanetService;
 
     @GetMapping
+    public List<Exoplanet> getAllExoplanets(@RequestParam(required = false) String name) {
+        return exoplanetService.search(name);
+    }
+
+    @GetMapping("paged")
     public Page<Exoplanet> getAllAsteroids(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size,
