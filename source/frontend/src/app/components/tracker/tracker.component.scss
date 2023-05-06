@@ -1,0 +1,31 @@
+.bg {
+  min-height: 100vh;
+  width: auto;
+  background: linear-gradient(135deg, #507493, #407177);
+  font-family: 'Familjen Grotesk', sans-serif;
+
+  .welcome-text {
+    font-size: 1.2rem;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  mat-card {
+    width: 300px;
+    margin: 10px;
+    background: #fff;
+    cursor: pointer;
+  }
+
+  .card-title {
+    font-weight: bold;
+    font-size: large;
+    margin-bottom: 10px;
+  }
+
+}
+

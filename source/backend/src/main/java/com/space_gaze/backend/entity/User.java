@@ -1,6 +1,5 @@
 package com.space_gaze.backend.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

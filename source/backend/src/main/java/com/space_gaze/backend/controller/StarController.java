@@ -8,6 +8,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/stars")
@@ -17,7 +19,12 @@ public class StarController {
     private StarService starService;
 
     @GetMapping
-    public Page<Star> getAllAsteroids(
+    public List<Star> getAllStars(@RequestParam(required = false) String name) {
+        return starService.search(name);
+    }
+
+    @GetMapping("paged")
+    public Page<Star> getAllStars(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size,
             @RequestParam(defaultValue = "id") String sortBy,

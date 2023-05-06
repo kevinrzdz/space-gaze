@@ -22,7 +22,6 @@ export class AsteroidService {
       .pipe(map((response) => response));
   }
 
-
   uploadImage(file: File, id: number) {
     const formData = new FormData();
     formData.append('file', file);
