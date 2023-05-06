@@ -8,7 +8,6 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +33,17 @@ public class AsteroidController {
     private AsteroidService asteroidService;
 
     @GetMapping
-    public Page<Asteroid> getAllAsteroids(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "20") int size, @RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "ASC") Sort.Direction direction) {
+    public List<Asteroid> getAllAsteroids(@RequestParam(required = false) String name) {
+        return asteroidService.search(name);
+    }
+
+    @GetMapping("paged")
+    public Page<Asteroid> getAllAsteroids(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "ASC") Sort.Direction direction
+    ) {
         PageRequest pageable = PageRequest.of(page, size, Sort.by(direction, sortBy));
         return asteroidService.findAll(pageable);
     }
@@ -44,7 +53,7 @@ public class AsteroidController {
         return asteroidService.findById(id);
     }
 
-    @PostMapping("/uploads")
+    @PostMapping("/upload")
     public Asteroid uploadImage(@RequestParam("file") MultipartFile file, @RequestParam("id") Integer id) {
         Asteroid asteroid = asteroidService.findById(id);
 
@@ -78,7 +87,7 @@ public class AsteroidController {
         return asteroid;
     }
 
-    @GetMapping("/uploads/img/{imageName:.+}")
+    @GetMapping("img/{imageName:.+}")
     public ResponseEntity<Resource> getImage(@PathVariable String imageName) {
         Path imagePath = Paths.get("uploads").resolve(imageName).toAbsolutePath();
         Resource resource;

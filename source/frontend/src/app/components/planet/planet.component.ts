@@ -18,7 +18,6 @@ export class PlanetComponent implements OnInit {
 
   loadPlanets(): void {
     this.planetService.getPlanets().subscribe(data => {
-      console.log(data);
       this.planets = data;
     });
   }
