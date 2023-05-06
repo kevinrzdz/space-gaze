@@ -1,31 +1,13 @@
 <div class="bg">
-  <app-navbar></app-navbar>
-  <div class="container text-center">
-    <div class="table-responsive">
-      <table class="table table-dark table-striped">
-        <thead>
-        <tr>
-          <th>Name</th>
-          <th>Constellation</th>
-          <th>Magnitude</th>
-          <th>Distance To Earth</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let star of stars">
-          <td>{{star.name}}</td>
-          <td>{{star.constellation}}</td>
-          <td>{{star.magnitude.toString() == "" ? 'No data available' : star.magnitude }}</td>
-          <td>{{star.distanceEarth.toString() == "" ? 'No data available' : star.distanceEarth }}</td>
-        </tr>
-        </tbody>
-      </table>
+    <app-navbar></app-navbar>
+    <div class="container text-center">
+      <div class="stars-welcome-container">
+        <h1 class="stars-welcome-title">Welcome to the Star Tracker</h1>
+        <p class="stars-welcome-text">Use the search box and find information about any star in the universe.</p>
+      </div>
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Search Stars</mat-label>
+        <input matInput>
+      </mat-form-field>
     </div>
-    <mat-paginator
-      (page)="pageChanged($event)" [length]="collectionSize"
-      [pageSizeOptions]="[15, 25, 50]"
-      [pageSize]="pageSize"
-    >
-    </mat-paginator>
   </div>
-</div>

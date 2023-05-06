@@ -1,5 +1,6 @@
 package com.space_gaze.backend.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -25,10 +26,6 @@ public class User implements Serializable {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role", nullable = false)
-    private Role role;
-
     @OneToMany(mappedBy = "user")
     private List<UserTrackingAsteroid> userTrackingAsteroids;
 
@@ -44,23 +41,10 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<UserTrackingStar> userTrackingStars;
 
-    public User(int id, String email, String username, String password) {
+    public User(Integer id, String email, String username, String password) {
         this.id = id;
         this.email = email;
         this.username = username;
         this.password = password;
-        this.role = Role.user;
-    }
-
-    public User(int id, String email, String username, String password, Role role) {
-        this.id = id;
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.role = role;
-    }
-
-    public enum Role {
-        user, admin
     }
 }

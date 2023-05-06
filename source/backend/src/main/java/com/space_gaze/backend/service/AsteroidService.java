@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AsteroidService implements CrudServiceInterface<Asteroid, Integer> {
@@ -20,8 +21,21 @@ public class AsteroidService implements CrudServiceInterface<Asteroid, Integer> 
         return asteroidRepository.findAll();
     }
 
+    @Override
     public Page<Asteroid> findAll(Pageable pageable) {
         return asteroidRepository.findAll(pageable);
+    }
+
+    public List<Asteroid> search(String name) {
+        List<Asteroid> asteroids = asteroidRepository.findAll();
+
+        if (name == null || name.trim().isEmpty()) {
+            return asteroids;
+        } else {
+            return asteroids.stream()
+                    .filter(asteroid -> asteroid.getName().toLowerCase().contains(name.toLowerCase()))
+                    .collect(Collectors.toList());
+        }
     }
 
     @Override

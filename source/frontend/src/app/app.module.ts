@@ -20,6 +20,8 @@ import {ExoplanetComponent} from './components/exoplanet/exoplanet.component';
 import {AstronomicalEventComponent} from './components/astronomical-event/astronomical-event.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import {AsteroidDetailsComponent} from './components/asteroid/details/asteroid-details.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import {AsteroidDetailsComponent} from './components/asteroid/details/asteroid-d
     BrowserAnimationsModule,
     MatTableModule,
     MatPaginatorModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatCardModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

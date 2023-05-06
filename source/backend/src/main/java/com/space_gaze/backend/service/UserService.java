@@ -45,11 +45,7 @@ public class UserService implements UserServiceInterface {
             return new LoginResponse("Username already in use", false);
         }
 
-        if (userDto.getRole() == null) {
-            user = new User(userDto.getId(), userDto.getEmail().toLowerCase(), userDto.getUsername().toLowerCase(), this.passwordEncoder.encode(userDto.getPassword()));
-        } else {
-            user = new User(userDto.getId(), userDto.getEmail().toLowerCase(), userDto.getUsername().toLowerCase(), this.passwordEncoder.encode(userDto.getPassword()), userDto.getRole());
-        }
+        user = new User(userDto.getId(), userDto.getEmail().toLowerCase(), userDto.getUsername().toLowerCase(), this.passwordEncoder.encode(userDto.getPassword()));
 
         userRepository.save(user);
         return new LoginResponse("User " + user.getUsername() + " added", true);

@@ -1,32 +1,31 @@
 .bg {
   min-height: 100vh;
   width: auto;
-  background-image: url("/assets/img/background.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  background: linear-gradient(135deg, #507493, #407177);
   font-family: 'Familjen Grotesk', sans-serif;
 
-  table {
-    width: 100%;
-    margin: 0 auto;
-    border-collapse: collapse;
-    border: 1px solid #fff;
-    border-radius: 0.8rem;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  .welcome-text {
+    font-size: 1.2rem;
   }
 
-  mat-paginator {
-    margin: 1rem auto;
+  .card-container {
     display: flex;
-    width: fit-content;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    color: #fff;
-    border: 1px solid #fff;
-    border-radius: 0.8rem;
-    background-color: transparent;
   }
+
+  mat-card {
+    width: 300px;
+    margin: 10px;
+    background: #fff;
+    cursor: pointer;
+  }
+
+  .card-title {
+    font-weight: bold;
+    font-size: large;
+    margin-bottom: 10px;
+  }
+
 }
 
