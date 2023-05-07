@@ -7,11 +7,25 @@
         <p class="welcome-text">Use the search box and find information about any asteroid, star or exoplanet on the
           solar system.</p>
       </div>
+      <div class="filter-container">
+        <mat-radio-group (change)="search(searchName)" [(ngModel)]="selectedFilter">
+          <mat-radio-button class="filter-option" value="all">All</mat-radio-button>
+          <mat-radio-button class="filter-option" value="asteroids">Asteroids</mat-radio-button>
+          <mat-radio-button class="filter-option" value="stars">Stars</mat-radio-button>
+          <mat-radio-button class="filter-option" value="exoplanets">Exoplanets</mat-radio-button>
+        </mat-radio-group>
+      </div>
       <mat-form-field appearance="outline" class="search-field">
         <mat-label>Search Celestial Body</mat-label>
-        <input (input)="search()" [(ngModel)]="searchName" matInput>
+        <input (input)="onInputChange(searchName)" [(ngModel)]="searchName" matInput>
       </mat-form-field>
-      <div class="card-container text-center">
+      <div *ngIf="isLoading" class="rocket-loader mt-3">
+        <div class="rocket">
+          <div class="rocket-extras"></div>
+          <div class="jet"><span></span></div>
+        </div>
+      </div>
+      <div *ngIf="!isLoading" class="card-container text-center">
         <mat-card *ngFor="let star of stars" class="star-card" routerLink="/stars/{{star.id}}">
           <mat-card-content>
             <svg class="icon icon-tabler icon-tabler-comet" fill="none" height="44" stroke="#6f32be"
@@ -25,19 +39,21 @@
             </svg>
             <p class="card-title">{{star.name}}</p>
             <p class="card-text">Constellation: {{star.constellation}}</p>
-            <p class="card-text">Distance Earth: {{star.distanceEarth == null || star.distanceEarth.toString() == '' ? 'No data yet' : star.distanceEarth + ' km'}}</p>
-            <p class="card-text">Magnitude: {{star.magnitude == null || star.magnitude.toString() == '' ? 'No data yet' : star.magnitude}}</p>
+            <p class="card-text">Distance
+              Earth: {{star.distanceEarth == null || star.distanceEarth.toString() == '' ? 'No data yet' : star.distanceEarth + ' km'}}</p>
+            <p class="card-text">
+              Magnitude: {{star.magnitude == null || star.magnitude.toString() == '' ? 'No data yet' : star.magnitude}}</p>
           </mat-card-content>
         </mat-card>
         <mat-card *ngFor="let asteroid of asteroids" class="asteroid-card" routerLink="/asteroids/{{asteroid.id}}">
           <mat-card-content>
-            <img src="/assets/img/asteroid-svgrepo-com.svg" alt="asteroid icon">
+            <img alt="asteroid icon" src="/assets/img/asteroid-svgrepo-com.svg">
             <p class="card-title">{{asteroid.name}}</p>
             <p class="card-text">Diameter: {{asteroid.diameter}} Km</p>
             <p class="card-text">Dangerous: {{asteroid.dangerous ? 'Yes' : 'No'}}</p>
           </mat-card-content>
         </mat-card>
-        <mat-card *ngFor="let exoplanet of exoplanets" class="asteroid-card" routerLink="/asteroids/{{exoplanet.id}}">
+        <mat-card *ngFor="let exoplanet of exoplanets" class="asteroid-card" routerLink="/exoplanets/{{exoplanet.id}}">
           <mat-card-content>
             <svg class="icon icon-tabler icon-tabler-planet" fill="none" height="44" stroke="#6f32be"
                  stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="44"
@@ -54,6 +70,10 @@
             <p class="card-text">Discovery Facility: {{exoplanet.discoveryFacility}}</p>
           </mat-card-content>
         </mat-card>
+        <h2 *ngIf="hasSearched && exoplanets.length === 0 && asteroids.length === 0 && stars.length === 0"
+            class="text-white">
+          No results found, please try again.
+        </h2>
       </div>
     </div>
   </div>
