@@ -5,6 +5,8 @@ import {Star} from "../../models/star/star.model";
 import {StarService} from "../../services/star/star.service";
 import {Exoplanet} from "../../models/exoplanet/exoplanet.model";
 import {ExoplanetService} from "../../services/exoplanet/exoplanet.service";
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-asteroid',
@@ -12,18 +14,55 @@ import {ExoplanetService} from "../../services/exoplanet/exoplanet.service";
   styleUrls: ['./tracker.component.scss'],
 })
 export class TrackerComponent {
-  asteroids!: Asteroid[];
-  stars!: Star[];
-  exoplanets!: Exoplanet[];
+  asteroids: Asteroid[] = [];
+  stars: Star[] = [];
+  exoplanets: Exoplanet[] = [];
   searchName: string = '';
+  private searchSubject = new Subject<string>();
+  isLoading: boolean = false;
+  hasSearched: boolean = false;
+  selectedFilter: string = 'all';
 
   constructor(private asteroidService: AsteroidService, private starService: StarService, private exoplanetService: ExoplanetService) {
+    this.searchSubject.pipe(
+      debounceTime(500),
+      distinctUntilChanged()
+    ).subscribe((searchName) => {
+      this.search(searchName);
+    });
   }
 
-  search(): void {
-    this.loadFilteredStars(this.searchName);
-    this.loadFilteredExoplanets(this.searchName);
-    this.loadFilteredAsteroids(this.searchName);
+  onInputChange(searchName: string): void {
+    this.isLoading = true;
+    this.searchSubject.next(searchName);
+  }
+
+  search(searchName: string): void {
+    this.hasSearched = true;
+
+    switch (this.selectedFilter) {
+      case 'asteroids':
+        this.loadFilteredAsteroids(searchName);
+        this.stars = [];
+        this.exoplanets = [];
+        break;
+      case 'stars':
+        this.loadFilteredStars(searchName);
+        this.asteroids = [];
+        this.exoplanets = [];
+        break;
+      case 'exoplanets':
+        this.loadFilteredExoplanets(searchName);
+        this.asteroids = [];
+        this.stars = [];
+        break;
+      default:
+        this.loadFilteredAsteroids(searchName);
+        this.loadFilteredStars(searchName);
+        this.loadFilteredExoplanets(searchName);
+    }
+
+    this.isLoading = false;
   }
 
   loadFilteredAsteroids(searchName: string): void {
