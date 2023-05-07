@@ -1,0 +1,73 @@
+.bg {
+  min-height: 100vh;
+  width: auto;
+  background-image: url("/assets/img/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'Familjen Grotesk', sans-serif;
+}
+
+.custom-card {
+  background-color: #411985;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-text {
+  font-size: large;
+}
+
+img {
+  border-radius: 0.8rem;
+}
+
+.img-fluid {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  color: #6f32be;
+}
+
+.file-input-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.file-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.file-label {
+  padding: 0.5rem 1rem;
+  background-color: #6f32be;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.file-input:hover + .file-label {
+  background-color: #4a229b;
+}
+
+.file-name {
+  font-size: 1rem;
+  color: #fff;
+}
+
+

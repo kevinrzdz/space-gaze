@@ -15,10 +15,10 @@
             />
             <p class="card-text mt-3">{{ event.description }}</p>
             <p>
-              <strong>Start Date:</strong> {{ event.startDate | date: 'short' }}
+              <strong>Start Date:</strong> {{ event.startDate | date : "dd/MM/yyyy" }}
             </p>
             <p>
-              <strong>End Date:</strong> {{ event.endDate | date: 'short' }}
+              <strong>End Date:</strong> {{ event.endDate | date: 'dd/MM/yyyy' }}
             </p>
           </div>
         </div>

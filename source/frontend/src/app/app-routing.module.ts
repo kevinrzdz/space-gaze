@@ -6,7 +6,7 @@ import {TrackerComponent} from "./components/tracker/tracker.component";
 import {HomeComponent} from "./components/home/home.component";
 import {PlanetComponent} from "./components/planet/planet.component";
 import {AstronomicalEventComponent} from "./components/astronomical-event/astronomical-event.component";
-import {DetailsComponent} from "./components/tracker/details/details.component";
+import {AsteroidComponent} from "./components/asteroid/asteroid.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'tracker', component: TrackerComponent},
-  {path: 'tracker/:id', component: DetailsComponent},
+  {path: 'asteroids/:id', component: AsteroidComponent},
   {path: 'planets', component: PlanetComponent},
   {path: 'events', component: AstronomicalEventComponent},
 ];

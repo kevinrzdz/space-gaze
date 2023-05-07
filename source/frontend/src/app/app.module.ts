@@ -17,9 +17,11 @@ import {HomeComponent} from './components/home/home.component';
 import {PlanetComponent} from './components/planet/planet.component';
 import {AstronomicalEventComponent} from './components/astronomical-event/astronomical-event.component';
 import {NgxPaginationModule} from "ngx-pagination";
-import {DetailsComponent} from './components/tracker/details/details.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {AsteroidComponent} from "./components/asteroid/asteroid.component";
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -31,7 +33,7 @@ import {MatInputModule} from "@angular/material/input";
     HomeComponent,
     PlanetComponent,
     AstronomicalEventComponent,
-    DetailsComponent,
+    AsteroidComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,9 @@ import {MatInputModule} from "@angular/material/input";
     MatPaginatorModule,
     NgxPaginationModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

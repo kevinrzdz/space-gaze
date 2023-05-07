@@ -1,0 +1,39 @@
+<div class="bg">
+  <div class="container">
+    <app-navbar></app-navbar>
+    <div class="container mt-5">
+      <div class="card custom-card">
+        <div class="row g-0">
+          <div class="col-md-5 d-flex align-items-center">
+            <img (error)="defaultImage($event)" alt="Image of {{asteroid.name}}"
+                 class="img-fluid m-1" src="http://localhost:8090/api/asteroids/img/{{asteroid.image}}">
+          </div>
+          <div class="col-md-7 d-flex align-items-center">
+            <div class="card-body text-center">
+              <h3 class="card-title py-3">
+                {{ asteroid.name  }}
+              </h3>
+              <h5 class="card-title">Diameter:</h5>
+              <p class="card-text">
+                {{ asteroid.diameter }} Km
+              </p>
+              <h5 class="card-title">Dangerous:</h5>
+              <p class="card-text">
+                {{asteroid.dangerous ? 'Yes' : 'No'}}
+              </p>
+              <h5 class="card-title">Help us contributing with an Image for this Asteroid!</h5>
+              <div class="file-input-wrapper my-3 d-flex justify-content-center">
+                <input (change)="selectImage($event)" class="file-input" id="imageUpload" type="file">
+                <label class="file-label" for="imageUpload">Select Image</label>
+                <span *ngIf="selectedImage" class="file-name ms-3 mt-2">{{ selectedImage.name }}</span>
+              </div>
+              <button (click)="uploadImage()" class="btn btn-outline-info me-3" type="button">Upload Image</button>
+              <button class="btn btn-outline-success ms-3" routerLink="/tracker" type="button">Return To Tracker
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
