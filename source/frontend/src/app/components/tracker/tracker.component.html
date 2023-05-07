@@ -70,8 +70,9 @@
             <p class="card-text">Discovery Facility: {{exoplanet.discoveryFacility}}</p>
           </mat-card-content>
         </mat-card>
-        <h2 *ngIf="hasSearched && exoplanets.length === 0 && asteroids.length === 0 && stars.length === 0"
-            class="text-white">
+        <h2
+          *ngIf="hasSearched && exoplanets.length === 0 && asteroids.length === 0 && stars.length === 0 && searchName != '' && !isSearching"
+          class="text-white">
           No results found, please try again.
         </h2>
       </div>

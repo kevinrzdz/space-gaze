@@ -5,8 +5,8 @@ import {Star} from "../../models/star/star.model";
 import {StarService} from "../../services/star/star.service";
 import {Exoplanet} from "../../models/exoplanet/exoplanet.model";
 import {ExoplanetService} from "../../services/exoplanet/exoplanet.service";
-import { Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import {Subject} from 'rxjs';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
 @Component({
   selector: 'app-asteroid',
@@ -18,14 +18,15 @@ export class TrackerComponent {
   stars: Star[] = [];
   exoplanets: Exoplanet[] = [];
   searchName: string = '';
-  private searchSubject = new Subject<string>();
   isLoading: boolean = false;
+  isSearching: boolean = false;
   hasSearched: boolean = false;
   selectedFilter: string = 'all';
+  private searchSubject = new Subject<string>();
 
   constructor(private asteroidService: AsteroidService, private starService: StarService, private exoplanetService: ExoplanetService) {
     this.searchSubject.pipe(
-      debounceTime(500),
+      debounceTime(750),
       distinctUntilChanged()
     ).subscribe((searchName) => {
       this.search(searchName);
@@ -38,8 +39,7 @@ export class TrackerComponent {
   }
 
   search(searchName: string): void {
-    this.hasSearched = true;
-
+    this.isSearching = true;
     switch (this.selectedFilter) {
       case 'asteroids':
         this.loadFilteredAsteroids(searchName);
@@ -61,8 +61,9 @@ export class TrackerComponent {
         this.loadFilteredStars(searchName);
         this.loadFilteredExoplanets(searchName);
     }
-
     this.isLoading = false;
+    this.hasSearched = true;
+    this.isSearching = false;
   }
 
   loadFilteredAsteroids(searchName: string): void {
