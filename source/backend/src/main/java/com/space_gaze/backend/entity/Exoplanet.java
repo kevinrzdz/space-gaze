@@ -35,6 +35,9 @@ public class Exoplanet implements Serializable {
     @Column(name = "radius")
     private Double radius;
 
+    @Column(name = "image")
+    private String image;
+
     @OneToMany(mappedBy = "exoplanet")
     @JsonIgnore
     private List<UserTrackingExoplanet> userTrackingExoplanets;
