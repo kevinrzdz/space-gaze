@@ -1,5 +1,6 @@
 package com.space_gaze.backend.service;
 
+import com.space_gaze.backend.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -16,4 +17,5 @@ public interface CrudServiceInterface<T, E> {
     T save(T entity);
 
     void deleteById(E id);
+
 }

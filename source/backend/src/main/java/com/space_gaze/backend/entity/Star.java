@@ -29,6 +29,9 @@ public class Star implements Serializable {
     @Column(name = "distance_earth", nullable = false)
     private String distanceEarth;
 
+    @Column(name = "image")
+    private String image;
+
     @OneToMany(mappedBy = "star")
     @JsonIgnore
     private List<UserTrackingStar> userTrackingStars;

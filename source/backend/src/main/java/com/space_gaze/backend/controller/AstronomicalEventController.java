@@ -16,29 +16,30 @@ public class AstronomicalEventController {
     private AstronomicalEventService astronomicalEventService;
 
     @GetMapping
-    public List<AstronomicalEvent> getAllAsteroids() {
+    public List<AstronomicalEvent> getAllEvent() {
         return astronomicalEventService.findAll();
     }
 
     @GetMapping("/{id}")
-    public AstronomicalEvent getAsteroidById(@PathVariable Integer id) {
+    public AstronomicalEvent getEventById(@PathVariable Integer id) {
         return astronomicalEventService.findById(id);
     }
 
     @PostMapping
-    public AstronomicalEvent createAsteroid(@RequestBody AstronomicalEvent astronomicalEvent) {
+    public AstronomicalEvent createEvent(@RequestBody AstronomicalEvent astronomicalEvent) {
         return astronomicalEventService.save(astronomicalEvent);
     }
 
     @PutMapping("/{id}")
-    public AstronomicalEvent updateAsteroid(@PathVariable Integer id, @RequestBody AstronomicalEvent astronomicalEvent) {
+    public AstronomicalEvent updateEvent(@PathVariable Integer id, @RequestBody AstronomicalEvent astronomicalEvent) {
         astronomicalEvent.setId(id);
         return astronomicalEventService.save(astronomicalEvent);
 
     }
 
     @DeleteMapping("/{id}")
-    public void deleteAsteroid(@PathVariable Integer id) {
+    public void deleteEvent(@PathVariable Integer id) {
         astronomicalEventService.deleteById(id);
     }
+
 }
