@@ -1,15 +1,13 @@
 .login-bg {
-  height: 100%;
-  max-height: 100%;
-  max-width: 100%;
-  font-family: 'Familjen Grotesk', sans-serif;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-image: url("/assets/img/starry_sky_4k_8k.jpg");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 h1,
@@ -80,9 +78,6 @@ $shadow: ();
 }
 
 .login-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
   width: 80%;
   max-width: 400px;
   padding: 40px;
@@ -93,8 +88,6 @@ $shadow: ();
   border-radius: 10px;
 
   .user-box {
-    position: relative;
-
     input {
       width: 100%;
       padding: 10px 0;
@@ -184,3 +177,9 @@ $shadow: ();
     }
   }
 }
+
+.login-bg.expanded {
+  height: 115vh;
+  min-height: 115vh;
+}
+

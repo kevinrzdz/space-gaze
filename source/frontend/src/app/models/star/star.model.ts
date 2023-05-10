@@ -4,4 +4,5 @@ export interface Star {
   constellation: string;
   magnitude: number;
   distanceEarth: number;
+  image: string;
 }

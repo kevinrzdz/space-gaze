@@ -1,4 +1,4 @@
-<div class="login-bg">
+<div [ngClass]="{'expanded': errorMessage}" class="login-bg">
   <div class="meteor-1"></div>
   <div class="meteor-2"></div>
   <div class="meteor-3"></div>
@@ -15,26 +15,32 @@
   <div class="meteor-14"></div>
   <div class="meteor-15"></div>
 
-  <div class="login-box">
-    <img ngSrc="assets/img/logo.png" class="logo" alt="logo" height="300" width="300" priority/>
+  <div class="login-box" [ngClass]="{'mt-5': errorMessage}">
+    <img alt="logo" class="logo" height="250" ngSrc="assets/img/logo.png" priority width="250"/>
     <h2 class="mt-3">Sign Up</h2>
     <form (ngSubmit)="register()">
       <div class="user-box">
-        <input type="text" name="email" id="email" [(ngModel)]="user.email" (keydown)="onEnter($event)" required/>
+        <input (keydown)="onEnter($event)" [(ngModel)]="user.email" id="email" name="email" required type="text"/>
         <label for="email">Email</label>
       </div>
       <div class="user-box">
-        <input type="text" name="username" id="username" [(ngModel)]="user.username" (keydown)="onEnter($event)"
-               required/>
+        <input (keydown)="onEnter($event)" [(ngModel)]="user.username" id="username" name="username" required
+               type="text"/>
         <label for="username">Username</label>
       </div>
       <div class="user-box">
-        <input type="password" name="password" id="password" [(ngModel)]="user.password" (keydown)="onEnter($event)"
-               required/>
+        <input (keydown)="onEnter($event)" [(ngModel)]="user.password" id="password" name="password" required
+               type="password"/>
         <label for="password">Password</label>
       </div>
-      <a class="send-btn m-1" (click)="register()">SEND</a>
-      <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{ errorMessage }}</div>
+      <div class="user-box">
+        <input (keydown)="onEnter($event)" [(ngModel)]="passwordConfirm" id="password-confirm" name="password-confirm"
+               required
+               type="password"/>
+        <label for="password-confirm">Confirm Password</label>
+      </div>
+      <a (click)="register()" class="send-btn m-1">SEND</a>
+      <div *ngIf="errorMessage" class="alert alert-danger" role="alert">{{ errorMessage }}</div>
       <p class="mt-3 text-white">Already have an account?</p>
       <div class="signup-button">
         <a routerLink="/login">Log In</a>

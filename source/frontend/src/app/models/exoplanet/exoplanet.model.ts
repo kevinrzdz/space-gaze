@@ -6,4 +6,5 @@ export interface Exoplanet {
   discoveryFacility: string;
   mass: number;
   radius: number;
+  image: string;
 }

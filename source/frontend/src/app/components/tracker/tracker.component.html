@@ -40,9 +40,9 @@
             <p class="card-title">{{star.name}}</p>
             <p class="card-text">Constellation: {{star.constellation}}</p>
             <p class="card-text">Distance
-              Earth: {{star.distanceEarth == null || star.distanceEarth.toString() == '' ? 'No data yet' : star.distanceEarth + ' km'}}</p>
+              Earth: {{star.distanceEarth == null || star.distanceEarth.toString() == '' ? 'No data yet' : star.distanceEarth + ' Ly'}}</p>
             <p class="card-text">
-              Magnitude: {{star.magnitude == null || star.magnitude.toString() == '' ? 'No data yet' : star.magnitude}}</p>
+              Brightness Magnitude: {{star.magnitude == null || star.magnitude.toString() == '' ? 'No data yet' : star.magnitude}}</p>
           </mat-card-content>
         </mat-card>
         <mat-card *ngFor="let asteroid of asteroids" class="asteroid-card" routerLink="/asteroids/{{asteroid.id}}">
@@ -64,8 +64,8 @@
               <circle cx="12" cy="12" r="7"/>
             </svg>
             <p class="card-title">{{exoplanet.name}}</p>
-            <p class="card-text">Mass: {{exoplanet.mass}} Kg</p>
-            <p class="card-text">Radius: {{exoplanet.radius}} Km</p>
+            <p class="card-text">Mass: {{exoplanet.mass == null ? 'No data yet' : exoplanet.mass + ' Kg'}}</p>
+            <p class="card-text">Radius: {{exoplanet.radius == null ? 'No data yet' : exoplanet.radius + ' Km'}}</p>
             <p class="card-text">Publication Date: {{exoplanet.publicationDate}}</p>
             <p class="card-text">Discovery Facility: {{exoplanet.discoveryFacility}}</p>
           </mat-card-content>
