@@ -7,6 +7,8 @@ import {HomeComponent} from "./components/home/home.component";
 import {PlanetComponent} from "./components/planet/planet.component";
 import {AstronomicalEventComponent} from "./components/astronomical-event/astronomical-event.component";
 import {AsteroidComponent} from "./components/asteroid/asteroid.component";
+import {StarComponent} from "./components/star/star/star.component";
+import {ExoplanetComponent} from "./components/exoplanet/exoplanet/exoplanet.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -15,6 +17,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'tracker', component: TrackerComponent},
   {path: 'asteroids/:id', component: AsteroidComponent},
+  {path: 'stars/:id', component: StarComponent},
+  {path: 'exoplanets/:id', component: ExoplanetComponent},
   {path: 'planets', component: PlanetComponent},
   {path: 'events', component: AstronomicalEventComponent},
 ];

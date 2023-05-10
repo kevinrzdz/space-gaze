@@ -14,9 +14,20 @@ export class ExoplanetService {
   constructor(private http: HttpClient) {
   }
 
+  getExoplanet(id: number): Observable<Exoplanet> {
+    return this.http.get<Exoplanet>(`${this.apiUrl}/${id}`);
+  }
+
   getFilteredExoplanets(searchTerm: string): Observable<Exoplanet[]> {
     return this.http
       .get<any>(`${this.apiUrl}?name=${searchTerm}`)
       .pipe(map((response) => response));
+  }
+
+  uploadImage(file: File, id: number) {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('id', id.toString());
+    return this.http.post(`${this.apiUrl}/upload`, formData);
   }
 }

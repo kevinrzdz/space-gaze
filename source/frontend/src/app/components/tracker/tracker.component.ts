@@ -22,7 +22,7 @@ export class TrackerComponent {
   isSearching: boolean = false;
   hasSearched: boolean = false;
   selectedFilter: string = 'all';
-  private searchSubject = new Subject<string>();
+  searchSubject: Subject<any> = new Subject<string>();
 
   constructor(private asteroidService: AsteroidService, private starService: StarService, private exoplanetService: ExoplanetService) {
     this.searchSubject.pipe(

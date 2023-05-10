@@ -22,6 +22,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {AsteroidComponent} from "./components/asteroid/asteroid.component";
 import {MatRadioModule} from "@angular/material/radio";
+import { StarComponent } from './components/star/star/star.component';
+import { ExoplanetComponent } from './components/exoplanet/exoplanet/exoplanet.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import {MatRadioModule} from "@angular/material/radio";
     HomeComponent,
     PlanetComponent,
     AstronomicalEventComponent,
-    AsteroidComponent
+    AsteroidComponent,
+    StarComponent,
+    ExoplanetComponent,
   ],
   imports: [
     BrowserModule,
