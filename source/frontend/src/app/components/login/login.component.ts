@@ -19,8 +19,15 @@ export class LoginComponent {
   }
 
   login() {
-    this.authService.login(this.loginData).subscribe(response => {
-      console.log(response);
+    this.authService.login(this.loginData).subscribe({
+      next: () => {
+        if (this.authService.getToken() != null) {
+          this.router.navigate(['/home']); // Cambiado a '/home'
+        }
+      },
+      error: (error) => {
+        this.errorMessage = error.message; // Aquí puedes mostrar el mensaje de error en tu plantilla.
+      }
     });
   }
 
