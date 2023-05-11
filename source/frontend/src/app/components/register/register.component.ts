@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth/auth.service';
 import {User} from "../../models/user/user.model";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-register',
@@ -45,12 +46,16 @@ export class RegisterComponent {
 
   register() {
     if (this.validate()) {
-      this.authService.register(this.user).subscribe((response) => {
-        console.log(response)
+      this.authService.register(this.user).subscribe({
+        next: (response) => {
+          Swal.fire(`${response.message}`, 'Log in with your new credentials', 'success').then(() => this.router.navigate(['/login']))
+        },
+        error: (error) => {
+          this.errorMessage = error.error.error;
+        }
       });
     }
   }
-
 
   validate(): boolean {
     for (const validation of this.validations) {
