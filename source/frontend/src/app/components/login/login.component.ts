@@ -21,9 +21,7 @@ export class LoginComponent {
   login() {
     this.authService.login(this.loginData).subscribe({
       next: () => {
-        if (this.authService.getToken() != null && window.innerWidth <= 992) {
-          this.router.navigate(['/home']);
-        } else {
+        if (this.authService.getToken() != null) {
           this.router.navigate(['/tracker']);
         }
       },
