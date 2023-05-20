@@ -1,21 +1,61 @@
-:host {
-  display: block;
-  width: 100%;
+body, html {
   height: 100%;
   margin: 0;
   padding: 0;
-  border: none;
   overflow: hidden;
 }
 
+.home-bg {
+  position: relative;
+  height: 100%;
+  background-color: #000000;
+}
+
+.container {
+  height: 100%;
+}
+
 iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   border: none;
 }
 
-.home-bg {
-  background-color: #000000;
-  height: 100%;
+.mobile-message {
+  display: none;
+  color: #ffffff;
+  margin-top: 3rem;
 }
 
+@media screen and (max-width: 992px) {
+  iframe {
+    display: none;
+  }
+  .mobile-message {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .home-bg {
+    background-image: url("/assets/img/background-2.jpg");
+    height: fit-content;
+  }
+}
+@media screen and (max-width: 480px) {
+  iframe {
+    display: none;
+  }
+  .mobile-message {
+    display: block;
+  }
+
+  .home-bg {
+    background-image: url("/assets/img/background-2.jpg");
+    height: 100%;
+  }
+}
