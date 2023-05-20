@@ -21,12 +21,14 @@ export class LoginComponent {
   login() {
     this.authService.login(this.loginData).subscribe({
       next: () => {
-        if (this.authService.getToken() != null) {
-          this.router.navigate(['/home']); // Cambiado a '/home'
+        if (this.authService.getToken() != null && window.innerWidth <= 992) {
+          this.router.navigate(['/home']);
+        } else {
+          this.router.navigate(['/tracker']);
         }
       },
       error: (error) => {
-        this.errorMessage = error.message; // Aquí puedes mostrar el mensaje de error en tu plantilla.
+        this.errorMessage = error.message;
       }
     });
   }
