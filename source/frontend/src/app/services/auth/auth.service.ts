@@ -18,7 +18,7 @@ export class AuthService {
   }
 
   login(user: Login) {
-    return this.http.post('http://localhost:8090/login', user, {observe: 'response'})
+    return this.http.post(`${this.apiUrl}/login`, user, {observe: 'response'})
       .pipe(
         tap(response => {
           const token = response.headers.get('Authorization');
@@ -27,7 +27,7 @@ export class AuthService {
           }
         }),
         catchError(() => {
-          return throwError(() => new Error('Hubo un error al iniciar sesión'));
+          return throwError(() => new Error('There was a mistake. Check your credentials'));
         })
       );
   }
