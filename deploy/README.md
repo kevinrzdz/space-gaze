@@ -1,6 +1,6 @@
 <div align="justify">
 
-# 🇬🇧 Deply 🇬🇧
+# 🇬🇧 Deploy 🇬🇧
 
 The deployment of this website will be done using Nginx and Tomcat.
 
