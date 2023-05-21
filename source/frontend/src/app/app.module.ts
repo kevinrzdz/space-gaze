@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {TrackerComponent} from './components/tracker/tracker.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NavbarComponent} from './components/navbar/navbar.component';
@@ -22,8 +22,10 @@ import {MatInputModule} from "@angular/material/input";
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {AsteroidComponent} from "./components/asteroid/asteroid.component";
 import {MatRadioModule} from "@angular/material/radio";
-import { StarComponent } from './components/star/star/star.component';
-import { ExoplanetComponent } from './components/exoplanet/exoplanet/exoplanet.component';
+import {StarComponent} from './components/star/star/star.component';
+import {ExoplanetComponent} from './components/exoplanet/exoplanet/exoplanet.component';
+import {AuthInterceptor} from "./services/auth.interceptor";
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { ExoplanetComponent } from './components/exoplanet/exoplanet/exoplanet.c
     AsteroidComponent,
     StarComponent,
     ExoplanetComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,13 @@ import { ExoplanetComponent } from './components/exoplanet/exoplanet/exoplanet.c
     MatProgressSpinnerModule,
     MatRadioModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

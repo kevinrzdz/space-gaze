@@ -1,0 +1,76 @@
+.bg {
+  min-height: 100vh;
+  width: auto;
+  background-image: url("/assets/img/bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'Familjen Grotesk', sans-serif;
+}
+
+.profile-container {
+  margin-top: 2em;
+}
+
+.profile-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card {
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  color: white;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  color: #6f32be;
+}
+
+.file-input-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.file-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.file-label {
+  padding: 0.5rem 1rem;
+  background-color: #6f32be;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.file-input:hover + .file-label {
+  background-color: #4a229b;
+}
+
+.file-name {
+  font-size: 1rem;
+  color: #fff;
+}
+
+img {
+  width: 500px;
+  height: 500px;
+}
