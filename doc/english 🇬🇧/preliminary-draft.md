@@ -28,9 +28,9 @@ Through this initiative, Space Gaze aims to foster collaboration and knowledge e
 The website will have the following functionalities (preliminary):
 
 - Show detailed information about different celestial bodies.
-- Allow users to search and filter information by different criteria, such as name, type of object, size, distance, among others.
-- Add favorite celestial bodies that they wish to track more closely.
+- Allow users to search and filter information.
 - Provide a calendar of astronomical events, such as eclipses, planetary alignments, and meteor showers.
+- A detailed 3d viewer of the Milky Way and all the bodies in it (provided by https://www.solarsystemscope.com/)
 
 The technologies used will be:
 
@@ -39,13 +39,12 @@ The technologies used will be:
 - Javascript and Typescript with Angular for the Front end.
 - Java with Spring for the Back end.
 - MySQL database.
-- Deployment with Docker.
 
 ### Sketch of the solution
 
 <div align="center">
 
-![Aplication draft](../../img/draft.png)
+![Application draft](../../img/draft.png)
 
 </div>
 

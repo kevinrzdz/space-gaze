@@ -25,6 +25,9 @@ public class User implements Serializable {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @Column(name = "image")
+    private String image;
+
     @OneToMany(mappedBy = "user")
     private List<UserTrackingAsteroid> userTrackingAsteroids;
 

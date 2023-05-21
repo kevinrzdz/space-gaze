@@ -19,11 +19,11 @@ export class RegisterComponent {
   passwordConfirm: string = '';
   validations = [
     {
-      isValid: () => this.user.email.trim().length > 0 && this.user.username.trim().length > 0 && this.user.password.trim().length > 0 && this.passwordConfirm.trim().length > 0,
+      isValid: () => this.user.email.toLowerCase().trim().length > 0 && this.user.username.trim().length > 0 && this.user.password.trim().length > 0 && this.passwordConfirm.trim().length > 0,
       errorMessage: 'Please, fill all the fields'
     },
     {
-      isValid: () => this.user.email.match("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),
+      isValid: () => this.user.email.toLowerCase().match("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),
       errorMessage: 'Invalid email format'
     },
     {

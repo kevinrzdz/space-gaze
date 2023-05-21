@@ -28,9 +28,9 @@ A través de esta iniciativa, Space Gaze tiene como objetivo fomentar la colabor
 La web tendrá las siguientes funcionalidades (preliminar):
 
 - Mostrar información detallada sobre distintos cuerpos celestes.
-- Permitir a los usuarios buscar y filtrar información por distintos criterios, como nombre, tipo de objeto, tamaño, distancia, entre otros.
-- Añadir a favoritos los cuerpos celestes a los que deseen realizar un seguimiento más detallado.
+- Permitir a los usuarios buscar y filtrar información por.
 - Proporcionar un calendario sobre eventos astronómicos, como eclipses, alineaciones planetarias y lluvias de meteoros.
+- Un visor 3D detallado de la Vía Láctea y todos los cuerpos en ella (gracias a https://www.solarsystemscope.com/).
 
 Las tecnologías usadas serán:
 
@@ -39,7 +39,6 @@ Las tecnologías usadas serán:
 - Javascript y Typescript con Angular para el Front end.
 - Java con Spring para el Back end.
 - Base de datos MySQL.
-- Despliegue con Docker.
 
 ### Boceto de la solución
 
