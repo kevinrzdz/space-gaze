@@ -1,6 +1,5 @@
 package com.space_gaze.backend.controller;
 
-import com.space_gaze.backend.entity.Asteroid;
 import com.space_gaze.backend.entity.User;
 import com.space_gaze.backend.repository.UserRepository;
 import com.space_gaze.backend.service.UserService;
@@ -112,7 +111,5 @@ public class UserController {
         header.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + imageName + "\"");
         return new ResponseEntity<>(resource, header, HttpStatus.OK);
     }
-
-
 
 }
