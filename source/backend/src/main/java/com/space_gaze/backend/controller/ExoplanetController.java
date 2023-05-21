@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/exoplanets")
 public class ExoplanetController {
