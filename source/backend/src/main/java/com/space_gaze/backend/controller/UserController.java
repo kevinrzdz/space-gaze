@@ -26,7 +26,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 public class UserController {
 
     @Autowired
