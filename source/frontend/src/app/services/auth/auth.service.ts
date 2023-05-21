@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {catchError, Observable, tap, throwError} from 'rxjs';
 import {User} from "../../models/user/user.model";
 import {Login} from "../../models/user/login.model";
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -27,13 +28,21 @@ export class AuthService {
           }
         }),
         catchError(() => {
-          return throwError(() => new Error('There was a mistake. Check your credentials'));
+          return throwError(() => new Error('There was an error. Check your credentials.'));
         })
       );
   }
 
-  getToken() {
+  getToken(): any {
     return sessionStorage.getItem('jwt');
+  }
+
+  getDecodedToken(): any {
+    try {
+      return jwt_decode(this.getToken());
+    } catch (Error) {
+      return null;
+    }
   }
 
 }
