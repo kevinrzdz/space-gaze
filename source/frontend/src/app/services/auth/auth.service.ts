@@ -28,7 +28,7 @@ export class AuthService {
           }
         }),
         catchError(() => {
-          return throwError(() => new Error('Hubo un error al iniciar sesión'));
+          return throwError(() => new Error('There was an error. Check your credentials.'));
         })
       );
   }
