@@ -5,7 +5,7 @@ import {Star} from "../../models/star/star.model";
 import {StarService} from "../../services/star/star.service";
 import {Exoplanet} from "../../models/exoplanet/exoplanet.model";
 import {ExoplanetService} from "../../services/exoplanet/exoplanet.service";
-import {Subject} from 'rxjs';
+import {forkJoin, of, Subject, tap} from 'rxjs';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
 @Component({
@@ -40,66 +40,71 @@ export class TrackerComponent {
 
   search(searchName: string): void {
     this.isSearching = true;
+    let observables = [];
+
     switch (this.selectedFilter) {
       case 'asteroids':
-        this.loadFilteredAsteroids(searchName);
+        observables.push(this.loadFilteredAsteroids(searchName));
         this.stars = [];
         this.exoplanets = [];
         break;
       case 'stars':
-        this.loadFilteredStars(searchName);
+        observables.push(this.loadFilteredStars(searchName));
         this.asteroids = [];
         this.exoplanets = [];
         break;
       case 'exoplanets':
-        this.loadFilteredExoplanets(searchName);
+        observables.push(this.loadFilteredExoplanets(searchName));
         this.asteroids = [];
         this.stars = [];
         break;
       default:
-        this.loadFilteredAsteroids(searchName);
-        this.loadFilteredStars(searchName);
-        this.loadFilteredExoplanets(searchName);
+        observables.push(this.loadFilteredAsteroids(searchName));
+        observables.push(this.loadFilteredStars(searchName));
+        observables.push(this.loadFilteredExoplanets(searchName));
     }
-    this.isLoading = false;
-    this.hasSearched = true;
-    this.isSearching = false;
+
+    forkJoin(observables).subscribe(() => {
+      this.isLoading = false;
+      this.hasSearched = true;
+      this.isSearching = false;
+    });
   }
 
-  loadFilteredAsteroids(searchName: string): void {
+  loadFilteredAsteroids(searchName: string) {
     if (searchName.trim() === '') {
       this.asteroids = [];
+      return of([]);
     } else {
-      this.asteroidService
-        .getFilteredAsteroids(searchName)
-        .subscribe((data) => {
+      return this.asteroidService.getFilteredAsteroids(searchName)
+        .pipe(tap((data) => {
           this.asteroids = data;
-        });
+        }));
     }
   }
 
-  loadFilteredStars(searchName: string): void {
+  loadFilteredStars(searchName: string) {
     if (searchName.trim() === '') {
       this.stars = [];
+      return of([]);
     } else {
-      this.starService
-        .getFilteredStars(searchName)
-        .subscribe((data) => {
+      return this.starService.getFilteredStars(searchName)
+        .pipe(tap((data) => {
           this.stars = data;
-        });
+        }));
     }
   }
 
-  loadFilteredExoplanets(searchName: string): void {
+  loadFilteredExoplanets(searchName: string) {
     if (searchName.trim() === '') {
       this.exoplanets = [];
+      return of([]);
     } else {
-      this.exoplanetService
-        .getFilteredExoplanets(searchName)
-        .subscribe((data) => {
+      return this.exoplanetService.getFilteredExoplanets(searchName)
+        .pipe(tap((data) => {
           this.exoplanets = data;
-        });
+        }));
     }
   }
-
 }
+

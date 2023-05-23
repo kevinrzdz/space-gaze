@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 })
 export class UserService {
 
-  private apiUrl: string = 'http://localhost:8090/api/user';
+  private apiUrl: string = 'https://spacegazebackend.alu7359.arkania.es/api/user';
 
   constructor(private http: HttpClient) {
   }

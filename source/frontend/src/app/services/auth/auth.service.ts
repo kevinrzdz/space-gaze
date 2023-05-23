@@ -9,7 +9,7 @@ import jwt_decode from 'jwt-decode';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl: string = 'http://localhost:8090';
+  private apiUrl: string = 'https://spacegazebackend.alu7359.arkania.es';
 
   constructor(private http: HttpClient) {
   }
@@ -19,7 +19,7 @@ export class AuthService {
   }
 
   login(user: Login) {
-    return this.http.post('http://localhost:8090/login', user, {observe: 'response'})
+    return this.http.post(`${this.apiUrl}/login`, user, {observe: 'response'})
       .pipe(
         tap(response => {
           const token = response.headers.get('Authorization');

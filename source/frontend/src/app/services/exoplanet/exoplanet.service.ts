@@ -9,7 +9,7 @@ import {map} from "rxjs/operators";
 })
 export class ExoplanetService {
 
-  private apiUrl = 'http://localhost:8090/api/exoplanets';
+  private apiUrl = 'https://spacegazebackend.alu7359.arkania.es/api/exoplanets';
 
   constructor(private http: HttpClient) {
   }

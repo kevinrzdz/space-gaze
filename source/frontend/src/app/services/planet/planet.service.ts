@@ -8,7 +8,7 @@ import {Planet} from "../../models/planet/planet.model";
 })
 export class PlanetService {
 
-  apiUrl: string = 'http://localhost:8090/api/planets';
+  apiUrl: string = 'https://spacegazebackend.alu7359.arkania.es/api/planets';
 
   constructor(private http: HttpClient) {
   }

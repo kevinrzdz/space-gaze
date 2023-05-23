@@ -5,20 +5,83 @@
       <div class="row">
         <div class="col">
           <div class="card profile-card h-100">
-            <div class="card-body d-flex align-items-center justify-content-center">
-              <img (error)="defaultImage($event)" alt="Imagen de {{user.username}}"
-                   class="img-fluid rounded-circle m-1" src="http://localhost:8090/api/asteroids/img/{{image}}">
+            <div
+              class="card-body d-flex align-items-center justify-content-center"
+            >
+              <img
+                (error)="defaultImage($event)"
+                alt="Image of {{ user.username }}"
+                class="img-fluid rounded-circle m-1"
+                src="https://spacegazebackend.alu7359.arkania.es/img/{{
+                  image
+                }}"
+              />
             </div>
             <div class="card-body d-flex flex-column align-items-center">
-              <h3 class="card-title">{{user.username}}</h3>
-              <h3 class="card-title">{{user.email}}</h3>
-              <div class="d-flex justify-content-around align-items-center w-50">
-                <div class="file-input-wrapper my-3">
-                  <input (change)="selectImage($event)" class="file-input" id="imageUpload" type="file">
-                  <label class="file-label" for="imageUpload">Select Image</label>
-                  <span *ngIf="selectedImage" class="file-name ms-3 mt-2">{{ selectedImage.name }}</span>
+              <h3 class="card-title text-uppercase">
+                <svg
+                  class="icon icon-tabler icon-tabler-user"
+                  fill="none"
+                  height="30"
+                  stroke="#00abfb"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  width="44"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M0 0h24v24H0z" fill="none" stroke="none"/>
+                  <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"/>
+                  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/>
+                </svg>
+                {{ user.username }}
+              </h3>
+              <h3 class="card-title text-uppercase">
+                <svg
+                  class="icon icon-tabler icon-tabler-mail"
+                  fill="none"
+                  height="44"
+                  stroke="#00abfb"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  width="30"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M0 0h24v24H0z" fill="none" stroke="none"/>
+                  <path
+                    d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"
+                  />
+                  <path d="M3 7l9 6l9 -6"/>
+                </svg>
+                {{ user.email }}
+              </h3>
+              <div
+                class="d-flex justify-content-around align-items-center w-50"
+              >
+                <div class="d-sm-flex flex-sm-row flex-column justify-content-around align-items-center w-50">
+                  <div class="file-input-wrapper my-3">
+                    <input
+                      (change)="selectImage($event)"
+                      class="file-input"
+                      id="imageUpload"
+                      type="file"
+                    />
+                    <label class="file-label" for="imageUpload">Select Image</label>
+                    <span *ngIf="selectedImage" class="file-name ms-3 mt-2">
+                      {{selectedImage.name}}
+                    </span>
+                  </div>
+                  <button
+                    (click)="uploadImage()"
+                    class="btn btn-outline-primary me-3"
+                    type="button"
+                  >
+                    Update Image
+                  </button>
                 </div>
-                <button (click)="uploadImage()" class="btn btn-outline-primary me-3" type="button">Update Image</button>
               </div>
             </div>
           </div>
@@ -27,3 +90,4 @@
     </div>
   </div>
 </div>
+
