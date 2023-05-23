@@ -9,7 +9,7 @@ import {map} from "rxjs/operators";
 })
 export class StarService {
 
-  private apiUrl: string = 'http://localhost:8090/api/stars';
+  private apiUrl: string = 'https://spacegazebackend.alu7359.arkania.es/api/stars';
 
   constructor(private http: HttpClient) {
   }

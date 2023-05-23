@@ -7,7 +7,7 @@ import {AstronomicalEvent} from "../../models/astronomical-event/astronomical-ev
   providedIn: 'root'
 })
 export class AstronomicalEventService {
-  private apiUrl = 'http://localhost:8090/api/astronomical-events';
+  private apiUrl = 'https://spacegazebackend.alu7359.arkania.es/api/astronomical-events';
 
   constructor(private http: HttpClient) {
   }
