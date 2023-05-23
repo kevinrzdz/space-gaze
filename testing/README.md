@@ -12,7 +12,7 @@ For the Backend, which was developed using Java and Spring Boot, you can find a 
 
 Esta aplicación se basa en dos partes, Backend y Frontend.
 
-El Frontend ha sido desarrollado usando Angular, dentro de cada componente, puedes encontrar todos los archivos 'spec.ts' con todas las pruebas realizadas.
+El Frontend ha sido desarrollado usando Angular, dentro de cada componente, puedes encontrar todos los archivos `spec.ts` con todas las pruebas realizadas.
 
 Para el Backend, que fue desarrollado usando Java y Spring Boot, puedes encontrar una carpeta de prueba, además de la principal.
 
