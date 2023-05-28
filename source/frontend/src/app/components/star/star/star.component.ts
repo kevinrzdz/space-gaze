@@ -30,7 +30,7 @@ export class StarComponent implements OnInit {
       Swal.fire({
         icon: 'success',
         title: 'Success',
-        text: `Your image has been updated`,
+        text: `Thanks for contributing with an image for this star!`,
         confirmButtonColor: '#6f32be',
         background: '#000',
         iconColor: '#c844ec'
