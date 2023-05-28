@@ -27,7 +27,14 @@ export class AsteroidComponent implements OnInit {
 
   uploadImage() {
     this.asteroidService.uploadImage(this.selectedImage, this.asteroid.id).subscribe(() => {
-        Swal.fire('Thank you for contributing!', `Image of asteroid ${this.asteroid.name} uploaded!`, 'success').then(
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: `Your image has been updated`,
+        confirmButtonColor: '#6f32be',
+        background: '#000',
+        iconColor: '#c844ec'
+      }).then(
           () => window.location.reload()
         );
       }

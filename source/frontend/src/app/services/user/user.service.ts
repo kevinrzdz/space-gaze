@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {User} from "../../models/user/user.model";
-import {Observable} from "rxjs";
+import { HttpClient } from '@angular/common/http';
+import { User } from '../../models/user/user.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
+  private apiUrl: string = 'http://localhost:8090/api/user';
 
-  private apiUrl: string = 'https://spacegazebackend.alu7359.arkania.es/api/user';
-
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getUserData(email: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}?email=${email}`);
@@ -23,5 +21,4 @@ export class UserService {
     formData.append('id', id.toString());
     return this.http.post(`${this.apiUrl}/upload`, formData);
   }
-
 }

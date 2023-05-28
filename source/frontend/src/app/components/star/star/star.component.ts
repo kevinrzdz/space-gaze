@@ -27,7 +27,14 @@ export class StarComponent implements OnInit {
 
   uploadImage() {
     this.starService.uploadImage(this.selectedImage, this.star.id).subscribe(() => {
-        Swal.fire('Thank you for contributing!', `Image of star ${this.star.name} uploaded!`, 'success').then(
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: `Your image has been updated`,
+        confirmButtonColor: '#6f32be',
+        background: '#000',
+        iconColor: '#c844ec'
+      }).then(
           () => window.location.reload()
         );
       }

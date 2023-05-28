@@ -1,18 +1,16 @@
-import {Injectable} from '@angular/core';
-import {Observable} from "rxjs";
-import {Exoplanet} from "../../models/exoplanet/exoplanet.model";
-import {HttpClient} from "@angular/common/http";
-import {map} from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Exoplanet } from '../../models/exoplanet/exoplanet.model';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ExoplanetService {
+  private apiUrl = 'http://localhost:8090/api/exoplanets';
 
-  private apiUrl = 'https://spacegazebackend.alu7359.arkania.es/api/exoplanets';
-
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getExoplanet(id: number): Observable<Exoplanet> {
     return this.http.get<Exoplanet>(`${this.apiUrl}/${id}`);

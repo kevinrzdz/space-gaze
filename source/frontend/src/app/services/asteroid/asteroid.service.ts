@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AsteroidService {
-  private apiUrl = 'https://spacegazebackend.alu7359.arkania.es/api/asteroids';
+  private apiUrl = 'http://localhost:8090/api/asteroids';
 
   constructor(private http: HttpClient) {}
 
