@@ -1,18 +1,16 @@
-import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {Star} from 'src/app/models/star/star.model';
-import {map} from "rxjs/operators";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Star } from 'src/app/models/star/star.model';
+import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StarService {
+  private apiUrl: string = 'http://localhost:8090/api/stars';
 
-  private apiUrl: string = 'https://spacegazebackend.alu7359.arkania.es/api/stars';
-
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getFilteredStars(searchTerm: string): Observable<Star[]> {
     return this.http

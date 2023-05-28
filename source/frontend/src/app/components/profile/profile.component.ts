@@ -34,7 +34,14 @@ export class ProfileComponent implements OnInit {
 
   uploadImage() {
     this.userService.uploadImage(this.selectedImage, parseInt(this.user.id)).subscribe(() => {
-        Swal.fire('Success', `Your image has been updated`, 'success').then(
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: `Your image has been updated`,
+          confirmButtonColor: '#6f32be',
+          background: '#000',
+          iconColor: '#c844ec'
+        }).then(
           () => window.location.reload()
         );
       }

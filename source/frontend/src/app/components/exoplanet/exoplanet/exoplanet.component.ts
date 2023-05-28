@@ -27,7 +27,14 @@ export class ExoplanetComponent implements OnInit {
 
   uploadImage() {
     this.exoplanetService.uploadImage(this.selectedImage, this.exoplanet.id).subscribe(() => {
-        Swal.fire('Thank you for contributing!', `Image of exoplanet ${this.exoplanet.name} uploaded!`, 'success').then(
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: `Your image has been updated`,
+        confirmButtonColor: '#6f32be',
+        background: '#000',
+        iconColor: '#c844ec'
+      }).then(
           () => window.location.reload()
         );
       }

@@ -5,8 +5,14 @@
       <div class="card custom-card">
         <div class="row g-0">
           <div class="col-md-5 d-flex align-items-center">
-            <img (error)="defaultImage($event)" alt="Image of {{exoplanet.name}}"
-                 class="img-fluid m-1" src="https://spacegazebackend.alu7359.arkania.es/api/exoplanets/img/{{exoplanet.image}}">
+            <img
+              (error)="defaultImage($event)"
+              alt="Image of {{ exoplanet.name }}"
+              class="img-fluid m-1"
+              src="http://localhost:8090/api/exoplanets/img/{{
+                exoplanet.image
+              }}"
+            />
           </div>
           <div class="col-md-7 d-flex align-items-center">
             <div class="card-body text-center">
@@ -15,28 +21,58 @@
               </h3>
               <h5 class="card-title">Mass:</h5>
               <p class="card-text">
-                {{exoplanet.mass == null ? 'No data yet' : exoplanet.mass + ' Kg'}}
+                {{
+                  exoplanet.mass == null
+                    ? "No data yet"
+                    : exoplanet.mass + " Kg"
+                }}
               </p>
               <h5 class="card-title">Radius:</h5>
               <p class="card-text">
-                {{exoplanet.radius == null ? 'No data yet' : exoplanet.radius + ' Km'}}
+                {{
+                  exoplanet.radius == null
+                    ? "No data yet"
+                    : exoplanet.radius + " Km"
+                }}
               </p>
               <h5 class="card-title">Publication Date:</h5>
               <p class="card-text">
-                {{exoplanet.publicationDate}}
+                {{ exoplanet.publicationDate }}
               </p>
               <h5 class="card-title">Discovery Facility:</h5>
               <p class="card-text">
-                {{exoplanet.discoveryFacility}}
+                {{ exoplanet.discoveryFacility }}
               </p>
-              <h5 class="card-title">Help us contributing with an Image for this Star!</h5>
-              <div class="file-input-wrapper my-3 d-flex justify-content-center">
-                <input (change)="selectImage($event)" class="file-input" id="imageUpload" type="file">
+              <h5 class="card-title">
+                Help us contributing with an Image for this Star!
+              </h5>
+              <div
+                class="file-input-wrapper my-3 d-flex justify-content-center"
+              >
+                <input
+                  (change)="selectImage($event)"
+                  class="file-input"
+                  id="imageUpload"
+                  type="file"
+                />
                 <label class="file-label" for="imageUpload">Select Image</label>
-                <span *ngIf="selectedImage" class="file-name ms-3 mt-2">{{ selectedImage.name }}</span>
+                <span *ngIf="selectedImage" class="file-name ms-3 mt-2">{{
+                  selectedImage.name
+                }}</span>
               </div>
-              <button (click)="uploadImage()" class="btn btn-outline-info me-3" type="button">Upload Image</button>
-              <button class="btn btn-outline-success ms-3" routerLink="/tracker" type="button">Return To Tracker
+              <button
+                (click)="uploadImage()"
+                class="btn btn-outline-info me-3"
+                type="button"
+              >
+                Upload Image
+              </button>
+              <button
+                class="btn btn-outline-success ms-3"
+                routerLink="/tracker"
+                type="button"
+              >
+                Return To Tracker
               </button>
             </div>
           </div>

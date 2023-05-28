@@ -5,8 +5,12 @@
       <div class="card custom-card">
         <div class="row g-0">
           <div class="col-md-5 d-flex align-items-center">
-            <img (error)="defaultImage($event)" alt="Image of {{star.name}}"
-                 class="img-fluid m-1" src="https://spacegazebackend.alu7359.arkania.es/api/stars/img/{{star.image}}">
+            <img
+              (error)="defaultImage($event)"
+              alt="Image of {{ star.name }}"
+              class="img-fluid m-1"
+              src="http://localhost:8090/api/stars/img/{{ star.image }}"
+            />
           </div>
           <div class="col-md-7 d-flex align-items-center">
             <div class="card-body text-center">
@@ -19,20 +23,51 @@
               </p>
               <h5 class="card-title">Distance Earth:</h5>
               <p class="card-text">
-                {{star.distanceEarth == null || star.distanceEarth.toString() == '' ? 'No data yet' : star.distanceEarth + ' Ly'}}
+                {{
+                  star.distanceEarth == null ||
+                  star.distanceEarth.toString() == ""
+                    ? "No data yet"
+                    : star.distanceEarth + " Ly"
+                }}
               </p>
               <h5 class="card-title">Brightness Magnitude:</h5>
               <p class="card-text">
-                {{star.magnitude == null || star.magnitude.toString() == '' ? 'No data yet' : star.magnitude}}
+                {{
+                  star.magnitude == null || star.magnitude.toString() == ""
+                    ? "No data yet"
+                    : star.magnitude
+                }}
               </p>
-              <h5 class="card-title">Help us contributing with an Image for this Star!</h5>
-              <div class="file-input-wrapper my-3 d-flex justify-content-center">
-                <input (change)="selectImage($event)" class="file-input" id="imageUpload" type="file">
+              <h5 class="card-title">
+                Help us contributing with an Image for this Star!
+              </h5>
+              <div
+                class="file-input-wrapper my-3 d-flex justify-content-center"
+              >
+                <input
+                  (change)="selectImage($event)"
+                  class="file-input"
+                  id="imageUpload"
+                  type="file"
+                />
                 <label class="file-label" for="imageUpload">Select Image</label>
-                <span *ngIf="selectedImage" class="file-name ms-3 mt-2">{{ selectedImage.name }}</span>
+                <span *ngIf="selectedImage" class="file-name ms-3 mt-2">{{
+                  selectedImage.name
+                }}</span>
               </div>
-              <button (click)="uploadImage()" class="btn btn-outline-info me-3" type="button">Upload Image</button>
-              <button class="btn btn-outline-success ms-3" routerLink="/tracker" type="button">Return To Tracker
+              <button
+                (click)="uploadImage()"
+                class="btn btn-outline-info me-3"
+                type="button"
+              >
+                Upload Image
+              </button>
+              <button
+                class="btn btn-outline-success ms-3"
+                routerLink="/tracker"
+                type="button"
+              >
+                Return To Tracker
               </button>
             </div>
           </div>
