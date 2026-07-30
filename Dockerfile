@@ -5,7 +5,9 @@ WORKDIR /frontend
 COPY source/frontend/package.json source/frontend/package-lock.json ./
 RUN npm ci
 COPY source/frontend/ ./
-RUN npm run build
+# Bust cached frontend layers when sources change between deploys.
+ARG FRONTEND_BUILD_ID=dev
+RUN echo "frontend build ${FRONTEND_BUILD_ID}" && npm run build
 
 FROM eclipse-temurin:17-jdk-jammy AS backend
 WORKDIR /backend
