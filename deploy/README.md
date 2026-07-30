@@ -8,9 +8,8 @@ Space Gaze is packaged as a single Docker image: the Angular production build is
 | --- | --- |
 | Web service | Spring Boot + Angular static assets (`Dockerfile`) |
 | Database | MySQL 8 |
-| Uploads | Demo images included in the image; mount `/app/uploads` if you need persistence |
 
-## Run locally (production-like)
+## Run locally
 
 ```bash
 docker compose up --build
