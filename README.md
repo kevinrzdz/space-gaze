@@ -58,40 +58,6 @@ deploy/       # Deployment guide
 doc/          # Project documentation (EN / ES)
 ```
 
-## Local development
-
-### Prerequisites
-
-- Java 17+
-- Node.js 18+ (for the Angular CLI)
-- MySQL 8
-- Or Docker / Docker Compose for the all-in-one setup above
-
-### Database
-
-```bash
-mysql -u root -p < source/space_gaze.sql
-```
-
-### Backend
-
-```bash
-cd source/backend
-./mvnw spring-boot:run
-```
-
-API: `http://localhost:8090`
-
-### Frontend
-
-```bash
-cd source/frontend
-npm install
-npm start
-```
-
-UI: `http://localhost:4200` (calls the API at `http://localhost:8090` in development)
-
 ## Deployment
 
 See [deploy/README.md](./deploy/README.md) for production deployment with Docker and Railway.
