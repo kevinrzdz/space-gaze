@@ -1,73 +1,62 @@
-# Deploy — Space Gaze
+# Deployment
 
-Production target: **Railway** (single Docker web service + managed MySQL).
-
-The Angular build is packaged inside the Spring Boot JAR and served from the same origin (no CORS needed in production).
+Space Gaze is packaged as a single Docker image: the Angular production build is copied into the Spring Boot JAR and served from the same origin.
 
 ## Architecture
 
-- **Web service:** Docker image from the repo root `Dockerfile`
-- **Database:** Railway MySQL plugin
-- **Uploads:** baked into the image for demo images; optional volume at `/app/uploads` for persistence
+| Component | Role |
+| --- | --- |
+| Web service | Spring Boot + Angular static assets (`Dockerfile`) |
+| Database | MySQL 8 |
+| Uploads | Demo images included in the image; mount `/app/uploads` if you need persistence |
 
-## Cost note
-
-JVM + MySQL usually need Railway **Hobby (~$5/month)** for a stable always-on portfolio demo. The free trial credits are enough to validate the deploy.
-
-## Deploy checklist (Railway)
-
-1. **Push** this repository to GitHub (`kevinrzdz/space-gaze` or your fork).
-
-2. In [Railway](https://railway.app), create a **New Project**.
-
-3. **Add MySQL**
-   - New → Database → MySQL
-   - Note the generated variables (`MYSQLHOST`, `MYSQLPORT`, `MYSQLUSER`, `MYSQLPASSWORD`, `MYSQLDATABASE`, or `MYSQL_URL`).
-
-4. **Add the web service**
-   - New → GitHub Repo → select this repository
-   - Railway should detect the root `Dockerfile` / `railway.toml`
-   - Root directory: repository root (default)
-
-5. **Set environment variables** on the web service:
-
-   | Variable | Value |
-   | --- | --- |
-   | `SPRING_DATASOURCE_URL` | `jdbc:mysql://${{MySQL.MYSQLHOST}}:${{MySQL.MYSQLPORT}}/${{MySQL.MYSQLDATABASE}}?serverTimezone=UTC` (use Railway variable references) |
-   | `SPRING_DATASOURCE_USERNAME` | `${{MySQL.MYSQLUSER}}` |
-   | `SPRING_DATASOURCE_PASSWORD` | `${{MySQL.MYSQLPASSWORD}}` |
-   | `JWT_SECRET` | a random string of at least 32 characters |
-   | `CORS_ALLOWED_ORIGINS` | your public HTTPS URL (optional when same-origin; useful if you keep a separate frontend) |
-   | `JAVA_OPTS` | `-Xmx384m` |
-   | `PORT` | left to Railway (injected automatically) |
-
-6. **Initialize the database** (once):
-   - Open the MySQL service → Query / Data / connect with any MySQL client
-   - Run [`source/schema.sql`](../source/schema.sql)
-   - Run [`source/seed-demo.sql`](../source/seed-demo.sql)
-
-7. **Public URL**
-   - Web service → Settings → Networking → Generate Domain
-   - Paste the HTTPS URL into the root [`README.md`](../README.md) Live demo section
-
-8. **Verify**
-   - Open the URL → Login with `demo@spacegaze.app` / `Demo1234!`
-   - Check Planets, Asteroids, Stars, Exoplanets, and Events
-   - Confirm asteroid images load for seeded rows that reference `uploads/`
-
-## Local production-like run
+## Run locally (production-like)
 
 ```bash
 docker compose up --build
 ```
 
-App: [http://localhost:8090](http://localhost:8090)
+Application: [http://localhost:8090](http://localhost:8090)
 
-## Demo credentials
+Demo account: `demo@spacegaze.app` / `Demo1234!`
 
-- Email: `demo@spacegaze.app`
-- Password: `Demo1234!`
+## Environment variables
 
-## Legacy note
+| Variable | Description |
+| --- | --- |
+| `PORT` | HTTP port (provided automatically on Railway) |
+| `SPRING_DATASOURCE_URL` | JDBC URL, e.g. `jdbc:mysql://host:3306/space_gaze?serverTimezone=UTC` |
+| `SPRING_DATASOURCE_USERNAME` | Database user |
+| `SPRING_DATASOURCE_PASSWORD` | Database password |
+| `JWT_SECRET` | HMAC signing secret (minimum 32 characters) |
+| `CORS_ALLOWED_ORIGINS` | Comma-separated origins (mainly for local `ng serve`) |
+| `UPLOADS_DIR` | Upload directory (default: `uploads`) |
+| `JAVA_OPTS` | JVM options (recommended: `-Xmx384m`) |
 
-The previous student hosting URL (`spacegaze.alu7359.arkania.es` with Nginx + Tomcat) is retired. Use Railway (or `docker compose`) instead.
+## Railway
+
+1. Create a new project and add a **MySQL** database.
+2. Add a service from this GitHub repository (root `Dockerfile`).
+3. Configure the web service variables (use Railway references to the MySQL service):
+
+   ```text
+   SPRING_DATASOURCE_URL=jdbc:mysql://${{MySQL.MYSQLHOST}}:${{MySQL.MYSQLPORT}}/${{MySQL.MYSQLDATABASE}}?serverTimezone=UTC
+   SPRING_DATASOURCE_USERNAME=${{MySQL.MYSQLUSER}}
+   SPRING_DATASOURCE_PASSWORD=${{MySQL.MYSQLPASSWORD}}
+   JWT_SECRET=<random-string-at-least-32-chars>
+   JAVA_OPTS=-Xmx384m
+   ```
+
+   Adjust the `MySQL` service name in the references if yours differs.
+
+4. Initialize the database once with [`source/schema.sql`](../source/schema.sql) and [`source/seed-demo.sql`](../source/seed-demo.sql).
+5. Generate a public domain under the web service networking settings.
+6. Confirm login and catalog pages on the live URL.
+
+## Database scripts
+
+| File | Purpose |
+| --- | --- |
+| [`source/schema.sql`](../source/schema.sql) | Tables only (safe for an empty managed database) |
+| [`source/seed-demo.sql`](../source/seed-demo.sql) | Demo catalog + demo user |
+| [`source/space_gaze.sql`](../source/space_gaze.sql) | Full local bootstrap (create DB + schema + seed) |

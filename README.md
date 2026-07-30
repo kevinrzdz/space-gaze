@@ -1,49 +1,77 @@
-
-
 # Space Gaze
 
+<div align="center">
+  <img src="./img/logo.png" alt="Space Gaze logo" height="220">
+</div>
 
+Space Gaze is a full-stack web application for exploring celestial objects — planets, exoplanets, asteroids, stars, and astronomical events. Users can register, sign in, browse catalog data, track objects of interest, and contribute images.
+
+Built as a web development project and prepared for public deployment as a portfolio demo.
+
+## Features
+
+- Browse planets, asteroids, stars, exoplanets, and astronomical events
+- Search and filter catalog entries
+- JWT-based authentication (register / login)
+- User profile with image upload
+- Object tracking for signed-in users
+- Single deployable unit: Angular UI served by Spring Boot
+
+## Tech stack
+
+| Layer | Technology |
+| --- | --- |
+| Frontend | Angular 15, Bootstrap, Angular Material |
+| Backend | Spring Boot 2.7, Java 17, Spring Security, JWT |
+| Database | MySQL 8 |
+| Packaging | Docker (multi-stage build) |
 
 ## Live demo
 
-Once deployed on Railway, the public URL will be listed here.
+<!-- Replace with your public HTTPS URL after deploying -->
+_Deployment URL coming soon._
 
-
-|                   |                      |
-| ----------------- | -------------------- |
-| **Demo login**    | `demo@spacegaze.app` |
-| **Demo password** | `Demo1234!`          |
-
-
-> Create a free account via Register if you prefer.
-
-## Stack
-
-- **Frontend:** Angular 15 + Bootstrap / Angular Material
-- **Backend:** Spring Boot 2.7 (Java 17), JWT auth
-- **Database:** MySQL 8
-
-## Quick start (Docker)
-
-Requires Docker and Docker Compose.
+**Try it locally** with Docker (recommended):
 
 ```bash
 docker compose up --build
 ```
 
-Open [http://localhost:8090](http://localhost:8090) and sign in with the demo credentials above.
+Then open [http://localhost:8090](http://localhost:8090).
+
+| | |
+| --- | --- |
+| Demo email | `demo@spacegaze.app` |
+| Demo password | `Demo1234!` |
+
+You can also create your own account from the Register page.
+
+## Project structure
+
+```
+source/
+  frontend/   # Angular application
+  backend/    # Spring Boot API
+  schema.sql  # Database schema
+  seed-demo.sql
+deploy/       # Deployment guide
+doc/          # Project documentation (EN / ES)
+```
 
 ## Local development
 
+### Prerequisites
 
+- Java 17+
+- Node.js 18+ (for the Angular CLI)
+- MySQL 8
+- Or Docker / Docker Compose for the all-in-one setup above
 
 ### Database
 
 ```bash
 mysql -u root -p < source/space_gaze.sql
 ```
-
-Or apply `[source/schema.sql](source/schema.sql)` then `[source/seed-demo.sql](source/seed-demo.sql)` on an existing `space_gaze` database.
 
 ### Backend
 
@@ -52,7 +80,7 @@ cd source/backend
 ./mvnw spring-boot:run
 ```
 
-API default: `http://localhost:8090`
+API: `http://localhost:8090`
 
 ### Frontend
 
@@ -62,38 +90,18 @@ npm install
 npm start
 ```
 
-UI default: `http://localhost:4200` (proxies API calls to `http://localhost:8090` via `environment.apiUrl`).
+UI: `http://localhost:4200` (calls the API at `http://localhost:8090` in development)
 
-## Environment variables
+## Deployment
 
-
-| Variable                     | Description              | Default (local)                                             |
-| ---------------------------- | ------------------------ | ----------------------------------------------------------- |
-| `PORT`                       | HTTP port                | `8090`                                                      |
-| `SPRING_DATASOURCE_URL`      | JDBC URL                 | `jdbc:mysql://localhost:3306/space_gaze?serverTimezone=UTC` |
-| `SPRING_DATASOURCE_USERNAME` | DB user                  | `space_gaze`                                                |
-| `SPRING_DATASOURCE_PASSWORD` | DB password              | `space_gaze2023.`                                           |
-| `JWT_SECRET`                 | HMAC secret (≥ 32 chars) | dev fallback in `application.properties`                    |
-| `CORS_ALLOWED_ORIGINS`       | Comma-separated origins  | `http://localhost:4200`                                     |
-| `UPLOADS_DIR`                | Upload directory         | `uploads`                                                   |
-| `JAVA_OPTS`                  | JVM flags (Docker)       | `-Xmx384m`                                                  |
-
-
-
-
-## Deploy
-
-See [deploy/README.md](./deploy/README.md) for Railway deployment steps.
+See [deploy/README.md](./deploy/README.md) for production deployment with Docker and Railway.
 
 ## Documentation
 
-- [English docs](./doc/english%20%F0%9F%87%AC%F0%9F%87%A7/)
+- [English documentation](./doc/english%20%F0%9F%87%AC%F0%9F%87%A7/)
 - [Documentación en español](./doc/espa%C3%B1ol%20%F0%9F%87%AA%F0%9F%87%B8)
-- [Source](./source/)
-- [Testing](./testing/README.md)
+- [Testing notes](./testing/README.md)
 
+## License
 
-
-### Introduction
-
-Space Gaze is a web application that provides information on celestial objects — planets, exoplanets, asteroids, stars, and astronomical events — with user accounts, tracking, and image uploads.
+See [LICENSE](./LICENSE).
