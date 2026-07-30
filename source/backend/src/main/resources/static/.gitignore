@@ -1,0 +1,3 @@
+# Keep static frontend assets out of git; Docker copies the Angular build here.
+*
+!.gitignore

@@ -1,6 +1,7 @@
 package com.space_gaze.backend.security;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -17,14 +18,19 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Configuration
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class WebSecurityConfig {
 
     private final UserDetailsService userDetailsService;
     private final JWTAuthorizationFilter jwtAuthorizationFilter;
+
+    @Value("${app.cors.allowed-origins:http://localhost:4200}")
+    private String allowedOrigins;
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http, AuthenticationManager authManager) throws Exception {
@@ -33,12 +39,30 @@ public class WebSecurityConfig {
         jwtAuthenticationFilter.setAuthenticationManager(authManager);
         jwtAuthenticationFilter.setFilterProcessesUrl("/login");
 
-        return http.cors().and().csrf().disable().authorizeHttpRequests().antMatchers(HttpMethod.POST, "/register").permitAll().antMatchers(HttpMethod.GET, "/**/img/**").permitAll().anyRequest().authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().addFilter(jwtAuthenticationFilter).addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class).build();
+        return http
+                .cors().and()
+                .csrf().disable()
+                .authorizeHttpRequests()
+                .antMatchers(HttpMethod.POST, "/register", "/login").permitAll()
+                .antMatchers(HttpMethod.GET, "/**/img/**").permitAll()
+                .antMatchers("/api/**").authenticated()
+                .antMatchers(HttpMethod.GET, "/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .addFilter(jwtAuthenticationFilter)
+                .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
+                .build();
     }
 
     @Bean
     AuthenticationManager AuthManager(HttpSecurity http) throws Exception {
-        return http.getSharedObject(AuthenticationManagerBuilder.class).userDetailsService(userDetailsService).passwordEncoder(passwordEncoder()).and().build();
+        return http.getSharedObject(AuthenticationManagerBuilder.class)
+                .userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder())
+                .and()
+                .build();
     }
 
     @Bean
@@ -46,16 +70,17 @@ public class WebSecurityConfig {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("http://localhost:4200");
-        config.addAllowedHeader("*");
-        config.setAllowedOrigins(List.of("http://localhost:4200"));
-        config.setAllowedMethods(List.of("GET", "POST"));
+        List<String> origins = Arrays.stream(allowedOrigins.split(","))
+                .map(String::trim)
+                .filter(origin -> !origin.isEmpty())
+                .collect(Collectors.toList());
+        config.setAllowedOrigins(origins);
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setExposedHeaders(List.of("Authorization"));
         source.registerCorsConfiguration("/**", config);
         return source;
     }
-
 
     @Bean
     PasswordEncoder passwordEncoder() {
