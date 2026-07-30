@@ -9,6 +9,7 @@ import {AstronomicalEventService} from "../../services/astronomical-event/astron
 })
 export class AstronomicalEventComponent implements OnInit {
   events!: AstronomicalEvent[];
+  titleYear = `${new Date().getFullYear()}`;
   img: string[] = [
     "/assets/img/event1.jpg",
     "/assets/img/event2.jpg",
@@ -40,9 +41,25 @@ export class AstronomicalEventComponent implements OnInit {
         ...event,
         image: this.getRandomImage(),
       }));
+      this.titleYear = this.buildTitleYear(sortedEvents);
     });
   }
 
+  private buildTitleYear(events: AstronomicalEvent[]): string {
+    const years = [...new Set(
+      events
+        .map((event) => new Date(event.startDate).getFullYear())
+        .filter((year) => !Number.isNaN(year))
+    )].sort((a, b) => a - b);
+
+    if (years.length === 0) {
+      return `${new Date().getFullYear()}`;
+    }
+    if (years.length === 1) {
+      return `${years[0]}`;
+    }
+    return `${years[0]}–${years[years.length - 1]}`;
+  }
 
   getRandomImage(): string {
     return this.img[Math.floor(Math.random() * this.img.length)];
