@@ -1,0 +1,11 @@
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 5
+
+[service]
+# Railway injects PORT. Configure MySQL + env vars in the dashboard.
+# See deploy/README.md for the full checklist.

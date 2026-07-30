@@ -1,0 +1,15 @@
+.git
+**/node_modules
+**/target
+**/dist
+**/.angular
+**/.idea
+**/.vscode
+**/uploads/.DS_Store
+doc
+img
+testing
+*.md
+!deploy/README.md
+.env
+.DS_Store

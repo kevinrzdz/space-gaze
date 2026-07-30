@@ -1,0 +1,41 @@
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: space_gaze
+      MYSQL_USER: space_gaze
+      MYSQL_PASSWORD: space_gaze2023.
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./source/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./source/seed-demo.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8090:8090"
+    environment:
+      PORT: "8090"
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/space_gaze?serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: space_gaze
+      SPRING_DATASOURCE_PASSWORD: space_gaze2023.
+      JWT_SECRET: local-dev-jwt-secret-change-me-32chars
+      CORS_ALLOWED_ORIGINS: http://localhost:4200,http://localhost:8090
+      UPLOADS_DIR: uploads
+      JAVA_OPTS: -Xmx384m
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  mysql_data:
