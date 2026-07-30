@@ -9,7 +9,7 @@
               (error)="defaultImage($event)"
               alt="Image of {{ exoplanet.name }}"
               class="img-fluid m-1"
-              src="http://localhost:8090/api/exoplanets/img/{{
+              src="{{ apiUrl }}/api/exoplanets/img/{{
                 exoplanet.image
               }}"
             />

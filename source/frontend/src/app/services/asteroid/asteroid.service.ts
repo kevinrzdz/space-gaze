@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Asteroid } from '../../models/asteroid/asteroid.model';
 import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AsteroidService {
-  private apiUrl = 'http://localhost:8090/api/asteroids';
+  private apiUrl = `${environment.apiUrl}/api/asteroids`;
 
   constructor(private http: HttpClient) {}
 

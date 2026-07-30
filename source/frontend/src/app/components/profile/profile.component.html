@@ -12,7 +12,7 @@
                 (error)="defaultImage($event)"
                 alt="Image of {{ user.username }}"
                 class="img-fluid rounded-circle m-1"
-                src="http://localhost:8090/img/{{ image }}"
+                src="{{ apiUrl }}/img/{{ image }}"
               />
             </div>
             <div class="card-body d-flex flex-column align-items-center">

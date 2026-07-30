@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Asteroid} from "../../models/asteroid/asteroid.model";
 import {AsteroidService} from "../../services/asteroid/asteroid.service";
 import Swal from 'sweetalert2';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'asteroid-details',
@@ -10,6 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./asteroid.component.scss']
 })
 export class AsteroidComponent implements OnInit {
+  apiUrl = environment.apiUrl;
   asteroid!: Asteroid;
   selectedImage!: File;
 

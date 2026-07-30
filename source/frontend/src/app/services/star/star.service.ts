@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Star } from 'src/app/models/star/star.model';
 import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StarService {
-  private apiUrl: string = 'http://localhost:8090/api/stars';
+  private apiUrl: string = `${environment.apiUrl}/api/stars`;
 
   constructor(private http: HttpClient) {}
 

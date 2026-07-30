@@ -3,12 +3,13 @@ import { Observable } from 'rxjs';
 import { Exoplanet } from '../../models/exoplanet/exoplanet.model';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ExoplanetService {
-  private apiUrl = 'http://localhost:8090/api/exoplanets';
+  private apiUrl = `${environment.apiUrl}/api/exoplanets`;
 
   constructor(private http: HttpClient) {}
 

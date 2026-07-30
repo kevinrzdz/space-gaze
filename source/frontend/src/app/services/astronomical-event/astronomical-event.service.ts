@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AstronomicalEvent } from '../../models/astronomical-event/astronomical-event';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AstronomicalEventService {
-  private apiUrl = 'http://localhost:8090/api/astronomical-events';
+  private apiUrl = `${environment.apiUrl}/api/astronomical-events`;
 
   constructor(private http: HttpClient) {}
 

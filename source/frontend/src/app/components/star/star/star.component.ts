@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import Swal from "sweetalert2";
 import {Star} from "../../../models/star/star.model";
 import {StarService} from "../../../services/star/star.service";
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-star',
@@ -10,6 +11,7 @@ import {StarService} from "../../../services/star/star.service";
   styleUrls: ['./star.component.scss']
 })
 export class StarComponent implements OnInit {
+  apiUrl = environment.apiUrl;
   star!: Star;
   selectedImage!: File;
 

@@ -9,7 +9,7 @@
               (error)="defaultImage($event)"
               alt="Image of {{ asteroid.name }}"
               class="img-fluid m-1"
-              src="http://localhost:8090/api/asteroids/img/{{ asteroid.image }}"
+              src="{{ apiUrl }}/api/asteroids/img/{{ asteroid.image }}"
             />
           </div>
           <div class="col-md-7 d-flex align-items-center">

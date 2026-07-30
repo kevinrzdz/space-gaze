@@ -3,6 +3,7 @@ import {User} from "../../models/user/user.model";
 import {UserService} from "../../services/user/user.service";
 import {AuthService} from "../../services/auth/auth.service";
 import Swal from "sweetalert2";
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-profile',
@@ -11,6 +12,7 @@ import Swal from "sweetalert2";
 })
 export class ProfileComponent implements OnInit {
 
+  apiUrl = environment.apiUrl;
   user: User = {
     id: '',
     password: '',

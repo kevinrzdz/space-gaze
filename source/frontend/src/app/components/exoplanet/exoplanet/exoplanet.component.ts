@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import Swal from "sweetalert2";
 import {Exoplanet} from "../../../models/exoplanet/exoplanet.model";
 import {ExoplanetService} from "../../../services/exoplanet/exoplanet.service";
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-exoplanet',
@@ -10,6 +11,7 @@ import {ExoplanetService} from "../../../services/exoplanet/exoplanet.service";
   styleUrls: ['./exoplanet.component.scss']
 })
 export class ExoplanetComponent implements OnInit {
+  apiUrl = environment.apiUrl;
   exoplanet!: Exoplanet;
   selectedImage!: File;
 
