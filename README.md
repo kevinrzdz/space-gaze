@@ -28,8 +28,7 @@ Built as a web development project and prepared for public deployment as a portf
 
 ## Live demo
 
-<!-- Replace with your public HTTPS URL after deploying -->
-_Deployment URL coming soon._
+https://space-gaze.up.railway.app/
 
 **Try it locally** with Docker (recommended):
 
